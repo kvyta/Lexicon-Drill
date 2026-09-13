@@ -1,0 +1,758 @@
+<title>Lexicon Drill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- Add to Home Screen (iOS Safari + Android Chrome): once bookmarked this way, the
+     app opens full-screen with no browser chrome, like a native app. -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAHfElEQVR4nO3d3VcUZRzA8ZnZWRSVFM0yJF+OR0hNUA8oJy1PHcmXBO77C7rqdGl/QV523emq+zpH5GhFaVa+gnpEUpHIl8gMBURQgZ3d6QLdN/e3O8/s7O7s7vdzp7Ky7vPl98zMDqKPTYxpOXb6cG2uP0UZ2nloONefQs9RHASRTzkKxeM4aKKwvK3Emzhowm88qSTbOMjCz7JMxMjmwZThc1kukMvJQRbFxd0IcTM5KKPouFsytclBFsVOaYQoTA7KKAFKi+g0DsooGc6X0lEclFFiHC5o5jgooyQ5WdYMcVBGCcu4uOnioIySl36JxTgoo0ykWeisLp+jtKWOg7FRVqTlThEHZZShlIvOtgJRchyMjbL18tIb6f8YZSUpALYViGJxMDagJWbA5ICIOCB6Hgd7CqKiMTA5ICIOiAyNPQUvmUuCyQERcUBEHBDpRz9fUOjnAJ9ickBEHBARB0TEARFxQEQcEBEHRMQBEXFARBwQEQdExAERcUBEHBARB0TEARFxQEQcEBEHRMQBEXFARBwQEQdExAERcUBEHBCZBfmso5P2V92zOfrLt64N7NtamH9XiWFyQEQcEBEHRMQBkb/+f45T16wzN8IOP3jhPP3Tjypy+nzKHJMDIuKAiDggIg6IiAMi4oCIOCAiDoiIAyLigIg4IOKmGNH3l63Lt5y+0ZPRgW1m45pA9Jdfds0+m7WdP3zTm0Z7c9CrJ+MQkwMi4oCIOCAiDog4IBXt22rG38V+diD8yx+W84c3rQu0Noov72cHY7cpTT6zv/5pdjoU+9OCHH6+jMnhVEtdYNVyhZerdyg89F8k44fZtna014ovY/ECfe+WwpehEYdzuq61N5mVKvcldvVaT2cynK+eHwzfeRBrSNe19mZzni/aIA4VVZX6/q0K6/Z0xu66mG4nuv/IPnUt4QPeqQ/ULvPLovjleRSL+pVG/LWsjIbuRy4Opb6SFgprnT2hSNzOs3KpsWuDj44CiUNZa4O5dJHu/ONP9FsPH6fYXH7us0YnY79fYWrtzaah8BfnHHEoC5pax/ag4fiVs8LakZ5QOPHYdPDfSNK1+Q8bzSUL/ZQGcbizYom+e6PC/B+ZsE/2x44tnkzbxy4lHGpsqDU2r1bYrfKDOFxqqQuseU3h1ev5M/zXizPbrosJZzGvVOr7VI5z84Y43GtrMisrFDaCuSbiK9E0Tde1tmZzvh/bII4sLJqvH9imsLk8mba/PWclXWZtqQusetWnq+DTp1Us6mqMLWsVjhWGRyNW3GHoG9X6e346d01CHNna02Auq3JzlhE0tfZmhbOe/PPxUysSwYDWsT0YUH8hVa+X5B9xeOD1xfruTWq7Q32N2pXWgiAOb+xYH1ircma7bkURvPJF8BSLxUGVM9sTV63HTxVuMC4I4vCMGdCDjjeK6ZDW2WvZ/s6DODzzw+XQ42cKq/33w8jZAc++9SEXiMMb/XfD14Yz3/eV5Lfr1r1x/04P4vDAxFP7xysKt5dGRWytsyc06+ah+UAc2bJtrbPHmom7CTSoclY7PmV3uworD4gjW2cGwsOjCRtKW1NQ6RpG353wjX+Ut6Q8II6s3Bu3f7+e8HXfuCZQX2OoXv08fik0qXIwmx/+fdcnb05ctc4Pxs4aqhfqn+x1dI95yNI6e0KRuDVdukhvbTC1F++bfHNqNuJsIsyd2X68K6j76Xo6k8O97j5rfCqWhmFoHduD0QMO1Xdc7z6InLvprzNb4nBp4F7kyu2Etdy90VyxJOELX/X7oH69bt1/5KPNhTjcmJq2jyfeBLp6udFSl3wQOvd9UM7v8opEtCMXQiHfnLsQhxtdvVb8f71SWaG3NaXeQaoq9f3bFO4BHJuyu/v8UgdxKLswGL41knCceWCbWVUpHkm+tdJoULmz/Mrt8M17vjizJQ41IxN20k2gW9YG6moyvIytjWa1ypntsUvW1HThDz6IQ4EV1joTvz1pWZW+pyHzKUnF3B2BjvN4Nmsf7S385kIcCk72Ww/ivrExYGgdzUGHb9PXVOvvqpzZ3h6JxF99KYjC/KSmnP7o0CxFL4J98d2M6mNb6gLvvx0roOuidfWOlwv8wWZzx/r83VzI5ICIOCAiDoiIAyJ//ehQ+AqTAyLigIg4ICIOiIgDIuKAiDggIg6IiAMi4oCIOCAiDoiIAyLigIg4ICIOiIgDIuKAiDggIg6IiAMi4oCIOCAiDoiIAyLigMjYeWi40M8BfrTz0DCTAyLigIg4IDI0TeOwA0nmkmByQEQcED2Pg50FUdEYmBwQEQdEsTjYWaAlZsDkgCghDoZHmUsKIHly0EfZennp2VYgShEHw6MMpVz01JODPsqKtNxsKxCJcTA8ykSahU43Oeij5KVf4gzbCn2UsIyLm/mYgz5KkpNldXRASh8lxuGCOj1boY+S4XwpFU5l6aMEKC2iPjYxpvoJTh+uVX0ICs7F17abi2CMkKLjbsncTI4oRoj/ZfOVnNXlc0aIz2W5QFlNjihGiN948nXrTRxRVFJY3s5yj+OIopJ8ytH+nqs44hFKLuThgO9/Gck4q3TMAy0AAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lexicon Drill">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eef1ee">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#12161d">
+<style>
+  :root{
+    --paper:#eef1ee;
+    --paper-card:#ffffff;
+    --ink:#1b2430;
+    --ink-soft:#57626f;
+    --ink-faint:#8b96a3;
+    --rule:#d7dcd6;
+    --accent:#b3790a;
+    --accent-ink:#3a2703;
+    --accent-soft:#f7e6bf;
+    --good:#2f7d5c;
+    --good-soft:#dcf0e6;
+    --bad:#b23a2f;
+    --bad-soft:#fbe1dd;
+    --shadow: 0 1px 2px rgba(27,36,48,.06), 0 8px 24px -12px rgba(27,36,48,.18);
+    --focus: 0 0 0 3px rgba(179,121,10,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#12161d;
+      --paper-card:#1b212b;
+      --ink:#eef1f4;
+      --ink-soft:#a7b1bd;
+      --ink-faint:#707b88;
+      --rule:#2b333e;
+      --accent:#e3a83f;
+      --accent-ink:#2a1c02;
+      --accent-soft:#3a2c0f;
+      --good:#5fbf94;
+      --good-soft:#173829;
+      --bad:#e2685c;
+      --bad-soft:#3a1c19;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 30px -14px rgba(0,0,0,.6);
+      --focus: 0 0 0 3px rgba(227,168,63,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12161d;
+    --paper-card:#1b212b;
+    --ink:#eef1f4;
+    --ink-soft:#a7b1bd;
+    --ink-faint:#707b88;
+    --rule:#2b333e;
+    --accent:#e3a83f;
+    --accent-ink:#2a1c02;
+    --accent-soft:#3a2c0f;
+    --good:#5fbf94;
+    --good-soft:#173829;
+    --bad:#e2685c;
+    --bad-soft:#3a1c19;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 30px -14px rgba(0,0,0,.6);
+    --focus: 0 0 0 3px rgba(227,168,63,.4);
+  }
+
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    padding-inline:max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right));
+    padding-block:max(28px, calc(env(safe-area-inset-top) + 16px)) max(48px, calc(env(safe-area-inset-bottom) + 24px));
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  button, .opt, .next-btn, .mode-btn, .filebar-btn{ touch-action:manipulation; }
+
+  .wrap{ width:100%; max-width:640px; display:flex; flex-direction:column; gap:18px; }
+
+  /* header */
+  header{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .brand{ display:flex; align-items:center; gap:9px; }
+  .brand-mark{
+    width:30px; height:30px; border-radius:6px; background:var(--accent); color:var(--accent-ink);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces', serif; font-weight:700; font-size:16px;
+    flex:none;
+  }
+  .brand-name{ font-family:'Fraunces', serif; font-weight:600; font-size:19px; letter-spacing:.2px; }
+  .brand-sub{ font-size:11px; color:var(--ink-faint); letter-spacing:.06em; text-transform:uppercase; margin-top:1px; }
+
+  .modes{ display:flex; gap:2px; background:var(--paper-card); border:1px solid var(--rule); border-radius:9px; padding:3px; box-shadow:var(--shadow); }
+  .mode-btn{
+    border:none; background:transparent; color:var(--ink-soft); font:600 13px/1 'IBM Plex Sans', sans-serif;
+    padding:12px 13px; min-height:44px; border-radius:6px; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap;
+  }
+  .mode-btn[aria-pressed="true"]{ background:var(--accent); color:var(--accent-ink); }
+  .mode-btn .count{ font-family:'IBM Plex Mono', monospace; font-variant-numeric:tabular-nums; font-size:11px; opacity:.85; }
+
+  /* stats strip */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--rule); border:1px solid var(--rule); border-radius:10px; overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .stat{ background:var(--paper-card); padding:10px 8px; text-align:center; }
+  .stat .v{ font-family:'IBM Plex Mono', monospace; font-variant-numeric:tabular-nums; font-weight:600; font-size:19px; }
+  .stat .l{ font-size:10px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em; margin-top:2px; }
+  .stat.accent .v{ color:var(--accent); }
+
+  /* question card */
+  .ticket{
+    position:relative;
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .ticket-top{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:13px 20px; border-bottom:1px dashed var(--rule);
+  }
+  .tag{
+    font:600 11px/1 'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:.06em;
+    padding:5px 9px; border-radius:5px; background:var(--accent-soft); color:var(--accent-ink);
+  }
+  :root:not([data-theme="light"]) .tag{ color:var(--accent); }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .tag{ color:var(--accent);} }
+  .qnum{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-faint); font-variant-numeric:tabular-nums; }
+
+  .prompt{ padding:30px 24px 22px; text-align:center; }
+  .prompt-eyebrow{ font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:10px; }
+  .prompt-word{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(26px,6vw,36px);
+    text-wrap:balance; line-height:1.15;
+  }
+  .prompt-pos{ font-style:italic; color:var(--ink-faint); font-size:15px; margin-left:8px; font-family:'IBM Plex Sans',sans-serif;}
+  .prompt-def{
+    font-family:'Fraunces', serif; font-weight:500; font-size:clamp(19px,4vw,24px);
+    line-height:1.35; text-wrap:balance;
+  }
+
+  .options{ display:flex; flex-direction:column; gap:9px; padding:0 20px 20px; }
+  .opt{
+    display:flex; align-items:center; gap:12px; text-align:left;
+    width:100%; min-height:48px; border:1.5px solid var(--rule); background:var(--paper-card); color:var(--ink);
+    border-radius:10px; padding:13px 14px; font:500 15px/1.35 'IBM Plex Sans', sans-serif;
+    cursor:pointer; transition:border-color .12s, background .12s;
+  }
+  .opt:hover:not(:disabled){ border-color:var(--accent); }
+  .opt:focus-visible{ outline:none; box-shadow:var(--focus); }
+  .opt .k{
+    flex:none; width:22px; height:22px; border-radius:5px; background:var(--paper); border:1px solid var(--rule);
+    display:flex; align-items:center; justify-content:center; font:600 11px/1 'IBM Plex Mono', monospace; color:var(--ink-faint);
+  }
+  .opt .t{ flex:1; }
+  .opt:disabled{ cursor:default; }
+  .opt.correct{ border-color:var(--good); background:var(--good-soft); }
+  .opt.correct .k{ background:var(--good); border-color:var(--good); color:var(--paper-card); }
+  .opt.incorrect{ border-color:var(--bad); background:var(--bad-soft); }
+  .opt.incorrect .k{ background:var(--bad); border-color:var(--bad); color:var(--paper-card); }
+  .opt.dim{ opacity:.5; }
+
+  .feedback{
+    display:none; align-items:center; gap:10px; margin:0 20px; padding:12px 14px;
+    border-radius:10px; font-size:14px; line-height:1.45;
+  }
+  .feedback.show{ display:flex; }
+  .feedback.good{ background:var(--good-soft); color:var(--good); }
+  .feedback.bad{ background:var(--bad-soft); color:var(--bad); }
+  .feedback b{ color:var(--ink); }
+  .feedback .icon{ flex:none; font-size:17px; }
+
+  .ticket-bottom{ display:flex; justify-content:flex-end; padding:16px 20px 20px; }
+  .next-btn{
+    font:600 14px/1 'IBM Plex Sans', sans-serif; background:var(--accent); color:var(--accent-ink);
+    border:none; border-radius:8px; padding:11px 20px; min-height:44px; cursor:pointer; display:flex; align-items:center; gap:8px;
+  }
+  .next-btn:focus-visible{ outline:none; box-shadow:var(--focus); }
+  .next-btn .hint{ font-family:'IBM Plex Mono', monospace; font-size:11px; opacity:.75; background:rgba(0,0,0,.12); padding:2px 6px; border-radius:4px; }
+  .next-auto{ font:500 13px/1 'IBM Plex Sans', sans-serif; color:var(--ink-faint); display:flex; align-items:center; gap:8px; cursor:pointer; }
+  .next-auto .hint{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; opacity:.85; background:var(--paper); border:1px solid var(--rule); padding:2px 6px; border-radius:4px; white-space:nowrap; }
+
+  footer.hintbar{ text-align:center; font-size:12px; color:var(--ink-faint); }
+  footer.hintbar kbd{ font-family:'IBM Plex Mono', monospace; background:var(--paper-card); border:1px solid var(--rule); border-radius:4px; padding:1px 5px; }
+
+  /* empty state (review mode w/ nothing saved) */
+  .empty{ padding:44px 24px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .empty .glyph{ font-size:30px; }
+  .empty h2{ font-family:'Fraunces',serif; font-weight:600; font-size:20px; margin:0; }
+  .empty p{ color:var(--ink-soft); font-size:14px; max-width:36ch; margin:0; line-height:1.5; }
+
+  @media (max-width:460px){
+    .stats{ grid-template-columns:repeat(2,1fr); }
+    .modes{ width:100%; }
+    .mode-btn{ flex:1; justify-content:center; }
+  }
+
+  /* local save-file bar (standalone file only) */
+  .filebar{
+    display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    background:var(--paper-card); border:1px solid var(--rule); border-radius:10px;
+    padding:10px 14px; box-shadow:var(--shadow); font-size:12.5px;
+  }
+  .filebar-text{ color:var(--ink-soft); }
+  .filebar-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .filebar-btn{
+    font:600 12px/1 'IBM Plex Sans', sans-serif; border-radius:7px; padding:7px 11px; cursor:pointer;
+    border:1px solid var(--accent); background:var(--accent); color:var(--accent-ink); white-space:nowrap;
+  }
+  .filebar-btn.ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .filebar-btn.ghost:hover{ border-color:var(--accent); color:var(--ink); }
+  label.filebar-btn{ display:inline-flex; align-items:center; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="brand-mark">Lx</div>
+      <div>
+        <div class="brand-name">Lexicon Drill</div>
+        <div class="brand-sub">496-word SAT/PSAT bank</div>
+      </div>
+    </div>
+    <div class="modes">
+      <button class="mode-btn" id="modeRapid" aria-pressed="true">Rapid Fire</button>
+      <button class="mode-btn" id="modeReview" aria-pressed="false">Review <span class="count" id="reviewCount">0</span></button>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="v" id="statStreak">0</div><div class="l">Streak</div></div>
+    <div class="stat"><div class="v" id="statAcc">—</div><div class="l">Accuracy</div></div>
+    <div class="stat"><div class="v" id="statAnswered">0</div><div class="l">Answered</div></div>
+    <div class="stat accent"><div class="v" id="statPace">—</div><div class="l">Sec / Q</div></div>
+  </div>
+
+  <div class="filebar" id="fileBar" hidden>
+    <span class="filebar-text" id="fileStatusText">Checking for a connected save file…</span>
+    <div class="filebar-actions">
+      <button class="filebar-btn" id="connectFileBtn" hidden>Connect a save file</button>
+      <label class="filebar-btn ghost" id="importLabel">Import a save file
+        <input type="file" id="importInput" accept=".html,.json,text/html,application/json" hidden>
+      </label>
+    </div>
+  </div>
+
+  <div class="ticket" id="ticket">
+    <!-- filled by JS -->
+  </div>
+
+  <footer class="hintbar" id="hintbar">Press <kbd>1</kbd>–<kbd>5</kbd> or tap an answer — the next word loads automatically.</footer>
+</div>
+
+<script src="words.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // A pristine snapshot of this exact page, captured before anything below has
+  // touched the DOM. When a save file is connected, this — with just the state
+  // marker swapped out — is what gets written back: a complete, still-working
+  // copy of the app with your progress baked in. No separate data file, ever.
+  var PRISTINE_HTML = "<!doctype html>\n" + document.documentElement.outerHTML;
+
+  // This literal is the marker `queueWriteToFile` looks for and replaces.
+  // Keep it a no-op (null) here — it's read out of PRISTINE_HTML, never off
+  // the live value below, so editing this line doesn't change boot behavior.
+  var BOOT_STATE = /*@S@*/null/*@/S@*/;
+
+  var STORE_KEY = "lexicon-drill-progress-v1";
+  var FS_SUPPORTED = typeof window.showSaveFilePicker === "function";
+  var SHOW_BACKUP_BAR = true;
+
+  function defaultState(){
+    return { totalAnswered:0, totalCorrect:0, streak:0, bestStreak:0,
+             review:{}, seen:{}, totalMs:0 };
+  }
+  function isValidState(s){
+    return !!s && typeof s === "object" && typeof s.totalAnswered === "number";
+  }
+  function loadState(){
+    // A connected save file (this same file, reopened) is the source of truth.
+    if(isValidState(BOOT_STATE)) return BOOT_STATE;
+    try{
+      var raw = localStorage.getItem(STORE_KEY);
+      if(raw) return JSON.parse(raw);
+    }catch(e){}
+    return defaultState();
+  }
+  function saveLocal(){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+  function saveState(){
+    saveLocal();
+    if(SHOW_BACKUP_BAR) queueWriteToFile();
+  }
+
+  // Pull a saved state object out of either this app's own save-file format
+  // (a full HTML page with the state marker below) or an old plain-JSON
+  // backup from an earlier version, so Import still opens both.
+  function extractState(text){
+    var m = text.match(/\/\*@S@\*\/([\s\S]*?)\/\*@\/S@\*\//);
+    if(m){
+      try{ var s = JSON.parse(m[1]); if(isValidState(s)) return s; }catch(e){}
+    }
+    try{ var s2 = JSON.parse(text); if(isValidState(s2)) return s2; }catch(e){}
+    return null;
+  }
+
+  // ---- optional on-disk save file: a living copy of this whole app, kept in
+  // sync after every answer (Chromium browsers only — see FS_SUPPORTED) ----
+  var fileHandle = null;
+  var fileStatus = "none"; // none | connected | needs-permission | error
+  var writeChain = Promise.resolve();
+
+  function buildSelfContainedHtml(){
+    var json = JSON.stringify(state);
+    return PRISTINE_HTML.replace(/\/\*@S@\*\/[\s\S]*?\/\*@\/S@\*\//, "/*@S@*/" + json + "/*@/S@*/");
+  }
+
+  function idbOpen(){
+    return new Promise(function(resolve, reject){
+      var req = indexedDB.open("lexicon-drill-db", 1);
+      req.onupgradeneeded = function(){ req.result.createObjectStore("handles"); };
+      req.onsuccess = function(){ resolve(req.result); };
+      req.onerror = function(){ reject(req.error); };
+    });
+  }
+  function idbGet(key){
+    return idbOpen().then(function(db){
+      return new Promise(function(resolve, reject){
+        var tx = db.transaction("handles", "readonly");
+        var req = tx.objectStore("handles").get(key);
+        req.onsuccess = function(){ resolve(req.result); };
+        req.onerror = function(){ reject(req.error); };
+      });
+    });
+  }
+  function idbSet(key, val){
+    return idbOpen().then(function(db){
+      return new Promise(function(resolve, reject){
+        var tx = db.transaction("handles", "readwrite");
+        tx.objectStore("handles").put(val, key);
+        tx.oncomplete = function(){ resolve(); };
+        tx.onerror = function(){ reject(tx.error); };
+      });
+    });
+  }
+
+  function queueWriteToFile(){
+    if(!fileHandle) return;
+    writeChain = writeChain.then(function(){
+      return fileHandle.createWritable().then(function(writable){
+        return writable.write(buildSelfContainedHtml()).then(function(){ return writable.close(); });
+      });
+    }).then(function(){
+      state.lastSavedAt = Date.now();
+      fileStatus = "connected";
+      refreshFileUi();
+    }).catch(function(e){
+      console.warn("lexicon-drill: file save failed", e);
+      fileStatus = "error";
+      refreshFileUi();
+    });
+  }
+
+  function timeAgo(ts){
+    if(!ts) return "never";
+    var s = Math.max(1, Math.round((Date.now() - ts) / 1000));
+    if(s < 60) return "just now";
+    var m = Math.round(s/60); if(m < 60) return m + (m===1?" minute ago":" minutes ago");
+    var h = Math.round(m/60); if(h < 24) return h + (h===1?" hour ago":" hours ago");
+    var d = Math.round(h/24); return d + (d===1?" day ago":" days ago");
+  }
+
+  function refreshFileUi(){
+    var bar = document.getElementById("fileBar");
+    var text = document.getElementById("fileStatusText");
+    var connectBtn = document.getElementById("connectFileBtn");
+    if(!bar || !SHOW_BACKUP_BAR) return;
+    bar.hidden = false;
+    if(!FS_SUPPORTED){
+      text.textContent = "Progress saves automatically in this browser — nothing to manage. Switching phones or browsers? Use Import with a save file from another device.";
+      connectBtn.hidden = true;
+      return;
+    }
+    connectBtn.hidden = false;
+    if(fileStatus === "connected"){
+      text.textContent = (fileHandle && fileHandle.name ? fileHandle.name : "Your save file") + " stays in sync automatically (last written " + timeAgo(state.lastSavedAt) + ") — reopen that file anytime to pick up where you left off.";
+      connectBtn.textContent = "Change file";
+    } else if(fileStatus === "needs-permission"){
+      text.textContent = "Found a connected save file, but this browser needs permission again after restarting.";
+      connectBtn.textContent = "Reconnect save file";
+    } else if(fileStatus === "error"){
+      text.textContent = "Couldn't write to your save file just now. Progress is still safe in this browser.";
+      connectBtn.textContent = "Reconnect save file";
+    } else {
+      text.textContent = "Not connected yet — progress only lives in this browser. Connect a file and this app keeps a self-updating copy of itself there, no separate data file.";
+      connectBtn.textContent = "Connect a save file";
+    }
+  }
+
+  function connectNewFile(){
+    window.showSaveFilePicker({
+      suggestedName: "lexicon-drill.html",
+      types: [{ description:"Lexicon Drill save file", accept:{ "text/html":[".html"] } }]
+    }).then(function(handle){
+      fileHandle = handle;
+      return idbSet("progressFile", handle);
+    }).then(function(){
+      fileStatus = "connected";
+      refreshFileUi();
+      queueWriteToFile();
+    }).catch(function(e){
+      if(e && e.name === "AbortError") return;
+      console.warn("lexicon-drill: connect failed", e);
+    });
+  }
+
+  function tryReconnectStoredFile(){
+    if(!FS_SUPPORTED){ refreshFileUi(); return; }
+    idbGet("progressFile").then(function(handle){
+      if(!handle) return;
+      return handle.queryPermission({ mode:"readwrite" }).then(function(p){
+        fileHandle = handle;
+        if(p === "granted"){
+          fileStatus = "connected";
+          return handle.getFile().then(function(f){ return f.text(); }).then(function(text){
+            var loaded = extractState(text);
+            if(loaded){
+              state = Object.assign(defaultState(), loaded);
+              saveLocal();
+              refreshStats();
+            }
+          });
+        } else {
+          fileStatus = "needs-permission";
+        }
+      });
+    }).catch(function(){}).then(refreshFileUi);
+  }
+
+  function importBackup(file){
+    var reader = new FileReader();
+    reader.onload = function(){
+      var loaded = extractState(String(reader.result));
+      if(!loaded){
+        window.alert("That doesn't look like a Lexicon Drill save file.");
+        return;
+      }
+      if(state.totalAnswered > 0 && !window.confirm(
+        "Replace this browser's current progress (" + state.totalAnswered + " answered) with the imported one (" + loaded.totalAnswered + " answered)?"
+      )) return;
+      state = Object.assign(defaultState(), loaded);
+      saveState();
+      refreshStats();
+      render();
+    };
+    reader.readAsText(file);
+  }
+
+  var state = loadState();
+  var byId = {};
+  WORD_DATA.forEach(function(w){ byId[w.id] = w; });
+  var allIds = WORD_DATA.map(function(w){ return w.id; });
+
+  var mode = "rapid"; // or "review"
+  var current = null;  // {wordId, direction, options:[ids], correctIdx, answered}
+  var qStartTs = 0;
+  var lastWordId = null;
+  var nextTimer = null;
+
+  function clearNextTimer(){
+    if(nextTimer){ clearTimeout(nextTimer); nextTimer = null; }
+  }
+  function goNext(){
+    clearNextTimer();
+    render();
+  }
+
+  var ticketEl = document.getElementById("ticket");
+  var hintbar = document.getElementById("hintbar");
+
+  function reviewIds(){
+    return Object.keys(state.review).map(Number).filter(function(id){ return byId[id]; });
+  }
+
+  function refreshStats(){
+    document.getElementById("statStreak").textContent = state.streak;
+    document.getElementById("statAnswered").textContent = state.totalAnswered;
+    document.getElementById("statAcc").textContent = state.totalAnswered
+      ? Math.round(100*state.totalCorrect/state.totalAnswered) + "%" : "—";
+    document.getElementById("statPace").textContent = state.totalAnswered
+      ? (state.totalMs/state.totalAnswered/1000).toFixed(1) : "—";
+    document.getElementById("reviewCount").textContent = reviewIds().length;
+  }
+
+  function shuffleArr(arr){
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; }
+    return a;
+  }
+
+  // Distractors must (a) share the word's part of speech, so answer choices
+  // can't be eliminated on grammar alone, and (b) mix a couple of genuine
+  // near-synonyms in with a broader, still-plausible set — pulling all 4
+  // from one tight synonym cluster makes every choice read as basically the
+  // same definition (unanswerable, and a giveaway of the word's meaning in
+  // its own right). MAX_SAME_CLUSTER caps how many of the 4 come from the
+  // word's own cluster; the rest come from the wider same-part-of-speech
+  // word list. Linked "related" clusters are often near-*antonyms* (lazy <->
+  // energetic), so they stay a last resort — otherwise one antonym mixed
+  // into four synonyms makes the odd one out obvious instead of testing
+  // precise meaning.
+  var MAX_SAME_CLUSTER = 2;
+  function pickDistractors(word, n){
+    var wantPos = word.pos;
+    function samePos(id){ return byId[id].pos === wantPos; }
+    var picked = [];
+    var used = {}; used[word.id] = true;
+    var sameIds = {}; word.same.forEach(function(id){ sameIds[id] = true; });
+    var relatedIds = {}; word.related.forEach(function(id){ relatedIds[id] = true; });
+
+    function addFrom(ids, cap){
+      var room = (cap == null) ? (n - picked.length) : Math.min(cap, n - picked.length);
+      if(room <= 0) return;
+      var candidates = shuffleArr(ids.filter(function(id){ return !used[id] && samePos(id); }));
+      candidates.slice(0, room).forEach(function(id){ picked.push(id); used[id] = true; });
+    }
+
+    addFrom(word.same, MAX_SAME_CLUSTER);           // tier 1: a couple of true near-synonyms
+    addFrom(allIds.filter(function(id){ return !sameIds[id] && !relatedIds[id]; })); // tier 2: broad same-POS pool
+    if(picked.length < n) addFrom(word.same);       // tier 3: exhaust same-cluster if the broad pool ran short
+    if(picked.length < n) addFrom(word.related);    // tier 4: linked cluster, last resort (often antonyms)
+    if(picked.length < n) addFrom(allIds);          // tier 5: absolute fallback, same part of speech
+    if(picked.length < n){                          // tier 6: should not normally trigger
+      var rest = shuffleArr(allIds.filter(function(id){ return !used[id]; }));
+      rest.forEach(function(id){ if(picked.length < n){ picked.push(id); used[id]=true; } });
+    }
+    return picked;
+  }
+
+  function nextWordId(pool){
+    var candidates = pool.filter(function(id){ return id !== lastWordId; });
+    if(candidates.length === 0) candidates = pool;
+    return candidates[Math.floor(Math.random()*candidates.length)];
+  }
+
+  function buildQuestion(){
+    var pool = mode === "review" ? reviewIds() : allIds;
+    if(pool.length === 0) return null;
+    var wordId = nextWordId(pool);
+    lastWordId = wordId;
+    var word = byId[wordId];
+    var direction = Math.random() < 0.5 ? "w2d" : "d2w"; // evenly weighted
+    var distractorIds = pickDistractors(word, 4);
+    var optionIds = distractorIds.concat([wordId]);
+    for(var i=optionIds.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=optionIds[i];optionIds[i]=optionIds[j];optionIds[j]=t; }
+    var correctIdx = optionIds.indexOf(wordId);
+    return { wordId: wordId, direction: direction, optionIds: optionIds, correctIdx: correctIdx, answered:false };
+  }
+
+  function letters(){ return ["A","B","C","D","E"]; }
+
+  function render(){
+    clearNextTimer();
+    if(mode === "review" && reviewIds().length === 0){
+      ticketEl.innerHTML =
+        '<div class="empty">' +
+          '<div class="glyph">🗂️</div>' +
+          '<h2>Nothing to review yet</h2>' +
+          '<p>Words you miss in Rapid Fire land here automatically. Drill Rapid Fire for a while, then come back before test day to clean up your weak spots.</p>' +
+        '</div>';
+      hintbar.textContent = "Switch to Rapid Fire to keep drilling.";
+      return;
+    }
+
+    current = buildQuestion();
+    qStartTs = Date.now();
+    if(!current) return;
+
+    var word = byId[current.wordId];
+    var isW2D = current.direction === "w2d";
+    var tagText = isW2D ? "Word → Definition" : "Definition → Word";
+
+    var promptHtml;
+    if(isW2D){
+      promptHtml =
+        '<div class="prompt-eyebrow">Which definition matches this word?</div>' +
+        '<div class="prompt-word">'+escapeHtml(word.word)+'<span class="prompt-pos">'+escapeHtml(word.pos)+'</span></div>';
+    } else {
+      promptHtml =
+        '<div class="prompt-eyebrow">Which word matches this definition?</div>' +
+        '<div class="prompt-def">“'+escapeHtml(capitalize(word.def))+'”</div>';
+    }
+
+    var optsHtml = current.optionIds.map(function(id, i){
+      var w = byId[id];
+      var label = isW2D ? capitalize(w.def) : w.word;
+      return '<button class="opt" data-i="'+i+'" data-id="'+id+'">' +
+             '<span class="k">'+letters()[i]+'</span><span class="t">'+escapeHtml(label)+'</span></button>';
+    }).join("");
+
+    ticketEl.innerHTML =
+      '<div class="ticket-top">' +
+        '<span class="tag">'+tagText+'</span>' +
+        '<span class="qnum">Q'+(state.totalAnswered+1)+ (mode==="review" ? " · review" : "") +'</span>' +
+      '</div>' +
+      '<div class="prompt">'+promptHtml+'</div>' +
+      '<div class="options">'+optsHtml+'</div>' +
+      '<div class="feedback" id="feedback"></div>' +
+      '<div class="ticket-bottom" id="ticketBottom"></div>';
+
+    Array.prototype.forEach.call(ticketEl.querySelectorAll(".opt"), function(btn){
+      btn.addEventListener("click", function(e){
+        e.stopPropagation(); // don't let this bubble into the ticket's skip-to-next listener
+        answer(Number(btn.getAttribute("data-i")));
+      });
+    });
+
+    hintbar.textContent = "Press 1–5 or tap an answer — the next word loads automatically.";
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function capitalize(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function answer(i){
+    if(!current || current.answered) return;
+    current.answered = true;
+    var elapsed = Date.now() - qStartTs;
+    state.totalMs += elapsed;
+
+    var correct = i === current.correctIdx;
+    var wordId = current.wordId;
+
+    state.totalAnswered++;
+    if(correct){
+      state.totalCorrect++;
+      state.streak++;
+      if(state.streak > state.bestStreak) state.bestStreak = state.streak;
+      if(state.review[wordId]) delete state.review[wordId];
+    } else {
+      state.streak = 0;
+      var rec = state.review[wordId] || { misses:0 };
+      rec.misses++;
+      rec.last = Date.now();
+      state.review[wordId] = rec;
+    }
+    saveState();
+    refreshStats();
+
+    var btns = ticketEl.querySelectorAll(".opt");
+    Array.prototype.forEach.call(btns, function(btn){
+      btn.disabled = true;
+      var bi = Number(btn.getAttribute("data-i"));
+      if(bi === current.correctIdx) btn.classList.add("correct");
+      else if(bi === i) btn.classList.add("incorrect");
+      else btn.classList.add("dim");
+    });
+
+    var word = byId[wordId];
+    var fb = document.getElementById("feedback");
+    fb.classList.add("show", correct ? "good" : "bad");
+    if(correct){
+      fb.innerHTML = '<span class="icon">✓</span><span>Correct — <b>'+escapeHtml(word.word)+'</b> ('+escapeHtml(word.pos)+') means '+escapeHtml(word.def)+'.</span>';
+    } else {
+      fb.innerHTML = '<span class="icon">✕</span><span>Not quite — <b>'+escapeHtml(word.word)+'</b> ('+escapeHtml(word.pos)+') means '+escapeHtml(word.def)+'. Saved to Review.</span>';
+    }
+
+    document.getElementById("ticketBottom").innerHTML =
+      '<span class="next-auto">Next word loading… <span class="hint">tap or Enter to skip</span></span>';
+
+    // Auto-advance: no second click needed. Correct answers move on quickly;
+    // misses linger a bit longer so there's time to read the definition.
+    // Tapping the ticket (or pressing Enter/Space, handled below) skips the wait.
+    clearNextTimer();
+    nextTimer = setTimeout(goNext, correct ? 700 : 2000);
+  }
+
+  document.getElementById("modeRapid").addEventListener("click", function(){
+    mode = "rapid";
+    this.setAttribute("aria-pressed","true");
+    document.getElementById("modeReview").setAttribute("aria-pressed","false");
+    goNext();
+  });
+  document.getElementById("modeReview").addEventListener("click", function(){
+    mode = "review";
+    this.setAttribute("aria-pressed","true");
+    document.getElementById("modeRapid").setAttribute("aria-pressed","false");
+    goNext();
+  });
+
+  document.addEventListener("keydown", function(e){
+    if(e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+    if(!current) return;
+    if(!current.answered && ["1","2","3","4","5"].indexOf(e.key) !== -1){
+      var idx = Number(e.key) - 1;
+      if(idx < current.optionIds.length){ answer(idx); e.preventDefault(); }
+    } else if(current.answered && (e.key === "Enter" || e.key === " ")){
+      goNext(); e.preventDefault();
+    }
+  });
+
+  // Tapping anywhere on the answered ticket skips the auto-advance wait.
+  // (Disabled option buttons don't dispatch click events, so this never
+  // fires as a side effect of the answer tap itself.)
+  ticketEl.addEventListener("click", function(){
+    if(current && current.answered) goNext();
+  });
+
+  document.getElementById("connectFileBtn").addEventListener("click", function(){
+    if(fileStatus === "needs-permission" || fileStatus === "error"){
+      fileHandle.requestPermission({ mode:"readwrite" }).then(function(p){
+        if(p === "granted"){ fileStatus = "connected"; refreshFileUi(); queueWriteToFile(); }
+        else refreshFileUi();
+      });
+    } else {
+      connectNewFile();
+    }
+  });
+  document.getElementById("importInput").addEventListener("change", function(e){
+    if(e.target.files && e.target.files[0]) importBackup(e.target.files[0]);
+    e.target.value = "";
+  });
+  if(SHOW_BACKUP_BAR) tryReconnectStoredFile();
+
+  refreshStats();
+  render();
+
+  // carry state across republish for viewers with the page already open
+  if(window.claude && window.claude.hot){
+    window.claude.hot.snapshot = function(){ return { state: state, mode: mode }; };
+    var boot = function(data){
+      if(data && data.state){ state = data.state; }
+      if(data && data.mode){ mode = data.mode; }
+      refreshStats();
+      render();
+    };
+    if(window.claude.hot.ready) window.claude.hot.ready(boot);
+    else boot(window.claude.hot.data || {});
+  }
+})();
+</script>

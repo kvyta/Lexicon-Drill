@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lexicon Drill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- Add to Home Screen (iOS Safari + Android Chrome): once bookmarked this way, the
+     app opens full-screen with no browser chrome, like a native app. -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAHfElEQVR4nO3d3VcUZRzA8ZnZWRSVFM0yJF+OR0hNUA8oJy1PHcmXBO77C7rqdGl/QV523emq+zpH5GhFaVa+gnpEUpHIl8gMBURQgZ3d6QLdN/e3O8/s7O7s7vdzp7Ky7vPl98zMDqKPTYxpOXb6cG2uP0UZ2nloONefQs9RHASRTzkKxeM4aKKwvK3Emzhowm88qSTbOMjCz7JMxMjmwZThc1kukMvJQRbFxd0IcTM5KKPouFsytclBFsVOaYQoTA7KKAFKi+g0DsooGc6X0lEclFFiHC5o5jgooyQ5WdYMcVBGCcu4uOnioIySl36JxTgoo0ykWeisLp+jtKWOg7FRVqTlThEHZZShlIvOtgJRchyMjbL18tIb6f8YZSUpALYViGJxMDagJWbA5ICIOCB6Hgd7CqKiMTA5ICIOiAyNPQUvmUuCyQERcUBEHBDpRz9fUOjnAJ9ickBEHBARB0TEARFxQEQcEBEHRMQBEXFARBwQEQdExAERcUBEHBARB0TEARFxQEQcEBEHRMQBEXFARBwQEQdExAERcUBEHBCZBfmso5P2V92zOfrLt64N7NtamH9XiWFyQEQcEBEHRMQBkb/+f45T16wzN8IOP3jhPP3Tjypy+nzKHJMDIuKAiDggIg6IiAMi4oCIOCAiDoiIAyLigIg4IOKmGNH3l63Lt5y+0ZPRgW1m45pA9Jdfds0+m7WdP3zTm0Z7c9CrJ+MQkwMi4oCIOCAiDog4IBXt22rG38V+diD8yx+W84c3rQu0Noov72cHY7cpTT6zv/5pdjoU+9OCHH6+jMnhVEtdYNVyhZerdyg89F8k44fZtna014ovY/ECfe+WwpehEYdzuq61N5mVKvcldvVaT2cynK+eHwzfeRBrSNe19mZzni/aIA4VVZX6/q0K6/Z0xu66mG4nuv/IPnUt4QPeqQ/ULvPLovjleRSL+pVG/LWsjIbuRy4Opb6SFgprnT2hSNzOs3KpsWuDj44CiUNZa4O5dJHu/ONP9FsPH6fYXH7us0YnY79fYWrtzaah8BfnHHEoC5pax/ag4fiVs8LakZ5QOPHYdPDfSNK1+Q8bzSUL/ZQGcbizYom+e6PC/B+ZsE/2x44tnkzbxy4lHGpsqDU2r1bYrfKDOFxqqQuseU3h1ev5M/zXizPbrosJZzGvVOr7VI5z84Y43GtrMisrFDaCuSbiK9E0Tde1tmZzvh/bII4sLJqvH9imsLk8mba/PWclXWZtqQusetWnq+DTp1Us6mqMLWsVjhWGRyNW3GHoG9X6e346d01CHNna02Auq3JzlhE0tfZmhbOe/PPxUysSwYDWsT0YUH8hVa+X5B9xeOD1xfruTWq7Q32N2pXWgiAOb+xYH1ircma7bkURvPJF8BSLxUGVM9sTV63HTxVuMC4I4vCMGdCDjjeK6ZDW2WvZ/s6DODzzw+XQ42cKq/33w8jZAc++9SEXiMMb/XfD14Yz3/eV5Lfr1r1x/04P4vDAxFP7xysKt5dGRWytsyc06+ah+UAc2bJtrbPHmom7CTSoclY7PmV3uworD4gjW2cGwsOjCRtKW1NQ6RpG353wjX+Ut6Q8II6s3Bu3f7+e8HXfuCZQX2OoXv08fik0qXIwmx/+fdcnb05ctc4Pxs4aqhfqn+x1dI95yNI6e0KRuDVdukhvbTC1F++bfHNqNuJsIsyd2X68K6j76Xo6k8O97j5rfCqWhmFoHduD0QMO1Xdc7z6InLvprzNb4nBp4F7kyu2Etdy90VyxJOELX/X7oH69bt1/5KPNhTjcmJq2jyfeBLp6udFSl3wQOvd9UM7v8opEtCMXQiHfnLsQhxtdvVb8f71SWaG3NaXeQaoq9f3bFO4BHJuyu/v8UgdxKLswGL41knCceWCbWVUpHkm+tdJoULmz/Mrt8M17vjizJQ41IxN20k2gW9YG6moyvIytjWa1ypntsUvW1HThDz6IQ4EV1joTvz1pWZW+pyHzKUnF3B2BjvN4Nmsf7S385kIcCk72Ww/ivrExYGgdzUGHb9PXVOvvqpzZ3h6JxF99KYjC/KSmnP7o0CxFL4J98d2M6mNb6gLvvx0roOuidfWOlwv8wWZzx/r83VzI5ICIOCAiDoiIAyJ//ehQ+AqTAyLigIg4ICIOiIgDIuKAiDggIg6IiAMi4oCIOCAiDoiIAyLigIg4ICIOiIgDIuKAiDggIg6IiAMi4oCIOCAiDoiIAyLigMjYeWi40M8BfrTz0DCTAyLigIg4IDI0TeOwA0nmkmByQEQcED2Pg50FUdEYmBwQEQdEsTjYWaAlZsDkgCghDoZHmUsKIHly0EfZennp2VYgShEHw6MMpVz01JODPsqKtNxsKxCJcTA8ykSahU43Oeij5KVf4gzbCn2UsIyLm/mYgz5KkpNldXRASh8lxuGCOj1boY+S4XwpFU5l6aMEKC2iPjYxpvoJTh+uVX0ICs7F17abi2CMkKLjbsncTI4oRoj/ZfOVnNXlc0aIz2W5QFlNjihGiN948nXrTRxRVFJY3s5yj+OIopJ8ytH+nqs44hFKLuThgO9/Gck4q3TMAy0AAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lexicon Drill">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eef1ee">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#12161d">
+<style>
+  :root{
+    --paper:#eef1ee;
+    --paper-card:#ffffff;
+    --ink:#1b2430;
+    --ink-soft:#57626f;
+    --ink-faint:#8b96a3;
+    --rule:#d7dcd6;
+    --accent:#b3790a;
+    --accent-ink:#3a2703;
+    --accent-soft:#f7e6bf;
+    --good:#2f7d5c;
+    --good-soft:#dcf0e6;
+    --bad:#b23a2f;
+    --bad-soft:#fbe1dd;
+    --shadow: 0 1px 2px rgba(27,36,48,.06), 0 8px 24px -12px rgba(27,36,48,.18);
+    --focus: 0 0 0 3px rgba(179,121,10,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#12161d;
+      --paper-card:#1b212b;
+      --ink:#eef1f4;
+      --ink-soft:#a7b1bd;
+      --ink-faint:#707b88;
+      --rule:#2b333e;
+      --accent:#e3a83f;
+      --accent-ink:#2a1c02;
+      --accent-soft:#3a2c0f;
+      --good:#5fbf94;
+      --good-soft:#173829;
+      --bad:#e2685c;
+      --bad-soft:#3a1c19;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 30px -14px rgba(0,0,0,.6);
+      --focus: 0 0 0 3px rgba(227,168,63,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12161d;
+    --paper-card:#1b212b;
+    --ink:#eef1f4;
+    --ink-soft:#a7b1bd;
+    --ink-faint:#707b88;
+    --rule:#2b333e;
+    --accent:#e3a83f;
+    --accent-ink:#2a1c02;
+    --accent-soft:#3a2c0f;
+    --good:#5fbf94;
+    --good-soft:#173829;
+    --bad:#e2685c;
+    --bad-soft:#3a1c19;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 30px -14px rgba(0,0,0,.6);
+    --focus: 0 0 0 3px rgba(227,168,63,.4);
+  }
+
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    padding-inline:max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right));
+    padding-block:max(28px, calc(env(safe-area-inset-top) + 16px)) max(48px, calc(env(safe-area-inset-bottom) + 24px));
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  button, .opt, .next-btn, .mode-btn, .filebar-btn{ touch-action:manipulation; }
+
+  .wrap{ width:100%; max-width:640px; display:flex; flex-direction:column; gap:18px; }
+
+  /* header */
+  header{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .brand{ display:flex; align-items:center; gap:9px; }
+  .brand-mark{
+    width:30px; height:30px; border-radius:6px; background:var(--accent); color:var(--accent-ink);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces', serif; font-weight:700; font-size:16px;
+    flex:none;
+  }
+  .brand-name{ font-family:'Fraunces', serif; font-weight:600; font-size:19px; letter-spacing:.2px; }
+  .brand-sub{ font-size:11px; color:var(--ink-faint); letter-spacing:.06em; text-transform:uppercase; margin-top:1px; }
+
+  .modes{ display:flex; gap:2px; background:var(--paper-card); border:1px solid var(--rule); border-radius:9px; padding:3px; box-shadow:var(--shadow); }
+  .mode-btn{
+    border:none; background:transparent; color:var(--ink-soft); font:600 13px/1 'IBM Plex Sans', sans-serif;
+    padding:12px 13px; min-height:44px; border-radius:6px; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap;
+  }
+  .mode-btn[aria-pressed="true"]{ background:var(--accent); color:var(--accent-ink); }
+  .mode-btn .count{ font-family:'IBM Plex Mono', monospace; font-variant-numeric:tabular-nums; font-size:11px; opacity:.85; }
+
+  /* stats strip */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--rule); border:1px solid var(--rule); border-radius:10px; overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .stat{ background:var(--paper-card); padding:10px 8px; text-align:center; }
+  .stat .v{ font-family:'IBM Plex Mono', monospace; font-variant-numeric:tabular-nums; font-weight:600; font-size:19px; }
+  .stat .l{ font-size:10px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em; margin-top:2px; }
+  .stat.accent .v{ color:var(--accent); }
+
+  /* question card */
+  .ticket{
+    position:relative;
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .ticket-top{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:13px 20px; border-bottom:1px dashed var(--rule);
+  }
+  .tag{
+    font:600 11px/1 'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:.06em;
+    padding:5px 9px; border-radius:5px; background:var(--accent-soft); color:var(--accent-ink);
+  }
+  :root:not([data-theme="light"]) .tag{ color:var(--accent); }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .tag{ color:var(--accent);} }
+  .qnum{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-faint); font-variant-numeric:tabular-nums; }
+
+  .prompt{ padding:30px 24px 22px; text-align:center; }
+  .prompt-eyebrow{ font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:10px; }
+  .prompt-word{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(26px,6vw,36px);
+    text-wrap:balance; line-height:1.15;
+  }
+  .prompt-pos{ font-style:italic; color:var(--ink-faint); font-size:15px; margin-left:8px; font-family:'IBM Plex Sans',sans-serif;}
+  .prompt-def{
+    font-family:'Fraunces', serif; font-weight:500; font-size:clamp(19px,4vw,24px);
+    line-height:1.35; text-wrap:balance;
+  }
+
+  .options{ display:flex; flex-direction:column; gap:9px; padding:0 20px 20px; }
+  .opt{
+    display:flex; align-items:center; gap:12px; text-align:left;
+    width:100%; min-height:48px; border:1.5px solid var(--rule); background:var(--paper-card); color:var(--ink);
+    border-radius:10px; padding:13px 14px; font:500 15px/1.35 'IBM Plex Sans', sans-serif;
+    cursor:pointer; transition:border-color .12s, background .12s;
+  }
+  .opt:hover:not(:disabled){ border-color:var(--accent); }
+  .opt:focus-visible{ outline:none; box-shadow:var(--focus); }
+  .opt .k{
+    flex:none; width:22px; height:22px; border-radius:5px; background:var(--paper); border:1px solid var(--rule);
+    display:flex; align-items:center; justify-content:center; font:600 11px/1 'IBM Plex Mono', monospace; color:var(--ink-faint);
+  }
+  .opt .t{ flex:1; }
+  .opt:disabled{ cursor:default; }
+  .opt.correct{ border-color:var(--good); background:var(--good-soft); }
+  .opt.correct .k{ background:var(--good); border-color:var(--good); color:var(--paper-card); }
+  .opt.incorrect{ border-color:var(--bad); background:var(--bad-soft); }
+  .opt.incorrect .k{ background:var(--bad); border-color:var(--bad); color:var(--paper-card); }
+  .opt.dim{ opacity:.5; }
+
+  .feedback{
+    display:none; align-items:center; gap:10px; margin:0 20px; padding:12px 14px;
+    border-radius:10px; font-size:14px; line-height:1.45;
+  }
+  .feedback.show{ display:flex; }
+  .feedback.good{ background:var(--good-soft); color:var(--good); }
+  .feedback.bad{ background:var(--bad-soft); color:var(--bad); }
+  .feedback b{ color:var(--ink); }
+  .feedback .icon{ flex:none; font-size:17px; }
+
+  .ticket-bottom{ display:flex; justify-content:flex-end; padding:16px 20px 20px; }
+  .next-btn{
+    font:600 14px/1 'IBM Plex Sans', sans-serif; background:var(--accent); color:var(--accent-ink);
+    border:none; border-radius:8px; padding:11px 20px; min-height:44px; cursor:pointer; display:flex; align-items:center; gap:8px;
+  }
+  .next-btn:focus-visible{ outline:none; box-shadow:var(--focus); }
+  .next-btn .hint{ font-family:'IBM Plex Mono', monospace; font-size:11px; opacity:.75; background:rgba(0,0,0,.12); padding:2px 6px; border-radius:4px; }
+  .next-auto{ font:500 13px/1 'IBM Plex Sans', sans-serif; color:var(--ink-faint); display:flex; align-items:center; gap:8px; cursor:pointer; }
+  .next-auto .hint{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; opacity:.85; background:var(--paper); border:1px solid var(--rule); padding:2px 6px; border-radius:4px; white-space:nowrap; }
+
+  footer.hintbar{ text-align:center; font-size:12px; color:var(--ink-faint); }
+  footer.hintbar kbd{ font-family:'IBM Plex Mono', monospace; background:var(--paper-card); border:1px solid var(--rule); border-radius:4px; padding:1px 5px; }
+
+  /* empty state (review mode w/ nothing saved) */
+  .empty{ padding:44px 24px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .empty .glyph{ font-size:30px; }
+  .empty h2{ font-family:'Fraunces',serif; font-weight:600; font-size:20px; margin:0; }
+  .empty p{ color:var(--ink-soft); font-size:14px; max-width:36ch; margin:0; line-height:1.5; }
+
+  @media (max-width:460px){
+    .stats{ grid-template-columns:repeat(2,1fr); }
+    .modes{ width:100%; }
+    .mode-btn{ flex:1; justify-content:center; }
+  }
+
+  /* local save-file bar (standalone file only) */
+  .filebar{
+    display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    background:var(--paper-card); border:1px solid var(--rule); border-radius:10px;
+    padding:10px 14px; box-shadow:var(--shadow); font-size:12.5px;
+  }
+  .filebar-text{ color:var(--ink-soft); }
+  .filebar-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .filebar-btn{
+    font:600 12px/1 'IBM Plex Sans', sans-serif; border-radius:7px; padding:7px 11px; cursor:pointer;
+    border:1px solid var(--accent); background:var(--accent); color:var(--accent-ink); white-space:nowrap;
+  }
+  .filebar-btn.ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .filebar-btn.ghost:hover{ border-color:var(--accent); color:var(--ink); }
+  label.filebar-btn{ display:inline-flex; align-items:center; }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="brand-mark">Lx</div>
+      <div>
+        <div class="brand-name">Lexicon Drill</div>
+        <div class="brand-sub">496-word SAT/PSAT bank</div>
+      </div>
+    </div>
+    <div class="modes">
+      <button class="mode-btn" id="modeRapid" aria-pressed="true">Rapid Fire</button>
+      <button class="mode-btn" id="modeReview" aria-pressed="false">Review <span class="count" id="reviewCount">0</span></button>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="v" id="statStreak">0</div><div class="l">Streak</div></div>
+    <div class="stat"><div class="v" id="statAcc">—</div><div class="l">Accuracy</div></div>
+    <div class="stat"><div class="v" id="statAnswered">0</div><div class="l">Answered</div></div>
+    <div class="stat accent"><div class="v" id="statPace">—</div><div class="l">Sec / Q</div></div>
+  </div>
+
+  <div class="filebar" id="fileBar" hidden>
+    <span class="filebar-text" id="fileStatusText">Checking for a connected save file…</span>
+    <div class="filebar-actions">
+      <button class="filebar-btn" id="connectFileBtn" hidden>Connect a save file</button>
+      <label class="filebar-btn ghost" id="importLabel">Import a save file
+        <input type="file" id="importInput" accept=".html,.json,text/html,application/json" hidden>
+      </label>
+    </div>
+  </div>
+
+  <div class="ticket" id="ticket">
+    <!-- filled by JS -->
+  </div>
+
+  <footer class="hintbar" id="hintbar">Press <kbd>1</kbd>–<kbd>5</kbd> or tap an answer — the next word loads automatically.</footer>
+</div>
+
+<script>
+const WORD_DATA = [{"id":0,"word":"loquacious","pos":"adj","def":"talking a great deal; very talkative","cluster":"loquacity","same":[1,2,3,4,5,6,7,8],"related":[9,10,11,12,13,14,15,16,17]},{"id":1,"word":"garrulous","pos":"adj","def":"excessively talkative, especially about trivial matters","cluster":"loquacity","same":[0,2,3,4,5,6,7,8],"related":[9,10,11,12,13,14,15,16,17]},{"id":2,"word":"voluble","pos":"adj","def":"speaking fluently, readily, and at length","cluster":"loquacity","same":[0,1,3,4,5,6,7,8],"related":[9,10,11,12,13,14,15,16,17]},{"id":3,"word":"effusive","pos":"adj","def":"expressing feelings or enthusiasm in an unrestrained, over-the-top way","cluster":"loquacity","same":[0,1,2,4,5,6,7,8],"related":[9,10,11,12,13,14,15,16,17]},{"id":4,"word":"gushing","pos":"adj","def":"expressing excessive or exaggerated enthusiasm","cluster":"loquacity","same":[0,1,2,3,5,6,7,8],"related":[9,10,11,12,13,14,15,16,17]},{"id":5,"word":"prolix","pos":"adj","def":"using far more words than needed; tediously long-winded","cluster":"loquacity","same":[0,1,2,3,4,6,7,8],"related":[9,10,11,12,13,14,15,16,17]},{"id":6,"word":"verbose","pos":"adj","def":"using more words than are needed; wordy","cluster":"loquacity","same":[0,1,2,3,4,5,7,8],"related":[9,10,11,12,13,14,15,16,17]},{"id":7,"word":"expansive","pos":"adj","def":"becoming openly talkative and unreserved, especially as a conversation warms up","cluster":"loquacity","same":[0,1,2,3,4,5,6,8],"related":[9,10,11,12,13,14,15,16,17]},{"id":8,"word":"chatty","pos":"adj","def":"talkative in a friendly, informal way","cluster":"loquacity","same":[0,1,2,3,4,5,6,7],"related":[9,10,11,12,13,14,15,16,17]},{"id":9,"word":"taciturn","pos":"adj","def":"habitually quiet by temperament; disinclined to speak","cluster":"taciturnity","same":[10,11,12,13,14,15,16,17],"related":[0,1,2,3,4,5,6,7,8]},{"id":10,"word":"reticent","pos":"adj","def":"not revealing one's thoughts or feelings readily","cluster":"taciturnity","same":[9,11,12,13,14,15,16,17],"related":[0,1,2,3,4,5,6,7,8]},{"id":11,"word":"laconic","pos":"adj","def":"using very few words; concise to the point of terseness","cluster":"taciturnity","same":[9,10,12,13,14,15,16,17],"related":[0,1,2,3,4,5,6,7,8]},{"id":12,"word":"terse","pos":"adj","def":"using very few words, often to the point of sounding clipped","cluster":"taciturnity","same":[9,10,11,13,14,15,16,17],"related":[0,1,2,3,4,5,6,7,8]},{"id":13,"word":"curt","pos":"adj","def":"rudely brief or abrupt in speech","cluster":"taciturnity","same":[9,10,11,12,14,15,16,17],"related":[0,1,2,3,4,5,6,7,8]},{"id":14,"word":"succinct","pos":"adj","def":"briefly and clearly expressed","cluster":"taciturnity","same":[9,10,11,12,13,15,16,17],"related":[0,1,2,3,4,5,6,7,8]},{"id":15,"word":"reserved","pos":"adj","def":"slow to reveal emotion, opinions, or personal information","cluster":"taciturnity","same":[9,10,11,12,13,14,16,17],"related":[0,1,2,3,4,5,6,7,8]},{"id":16,"word":"uncommunicative","pos":"adj","def":"unwilling to talk or share information","cluster":"taciturnity","same":[9,10,11,12,13,14,15,17],"related":[0,1,2,3,4,5,6,7,8]},{"id":17,"word":"monosyllabic","pos":"adj","def":"(of a person) tending to say very little","cluster":"taciturnity","same":[9,10,11,12,13,14,15,16],"related":[0,1,2,3,4,5,6,7,8]},{"id":18,"word":"circuitous","pos":"adj","def":"longer and less direct than a straight path; roundabout","cluster":"circuitous","same":[19,20,21,22,23,24,25,26],"related":[27,28,29,30,31,32,33,34]},{"id":19,"word":"convoluted","pos":"adj","def":"extremely complex and difficult to follow","cluster":"circuitous","same":[18,20,21,22,23,24,25,26],"related":[27,28,29,30,31,32,33,34]},{"id":20,"word":"discursive","pos":"adj","def":"moving from topic to topic without a fixed plan","cluster":"circuitous","same":[18,19,21,22,23,24,25,26],"related":[27,28,29,30,31,32,33,34]},{"id":21,"word":"rambling","pos":"adj","def":"lengthy, wandering, and inconsequential","cluster":"circuitous","same":[18,19,20,22,23,24,25,26],"related":[27,28,29,30,31,32,33,34]},{"id":22,"word":"meandering","pos":"adj","def":"wandering aimlessly rather than moving directly","cluster":"circuitous","same":[18,19,20,21,23,24,25,26],"related":[27,28,29,30,31,32,33,34]},{"id":23,"word":"byzantine","pos":"adj","def":"excessively complicated, typically involving many confusing parts","cluster":"circuitous","same":[18,19,20,21,22,24,25,26],"related":[27,28,29,30,31,32,33,34]},{"id":24,"word":"labyrinthine","pos":"adj","def":"intricate and confusing; like a maze","cluster":"circuitous","same":[18,19,20,21,22,23,25,26],"related":[27,28,29,30,31,32,33,34]},{"id":25,"word":"tortuous","pos":"adj","def":"full of twists and turns; excessively lengthy and complex","cluster":"circuitous","same":[18,19,20,21,22,23,24,26],"related":[27,28,29,30,31,32,33,34]},{"id":26,"word":"circumlocutory","pos":"adj","def":"using an indirect, roundabout way of speaking","cluster":"circuitous","same":[18,19,20,21,22,23,24,25],"related":[27,28,29,30,31,32,33,34]},{"id":27,"word":"lucid","pos":"adj","def":"expressed clearly; easy to understand","cluster":"clarity","same":[28,29,30,31,32,33,34],"related":[18,19,20,21,22,23,24,25,26,35,36,37,38,39,40,41,42,43,44]},{"id":28,"word":"cogent","pos":"adj","def":"clear, logical, and convincing","cluster":"clarity","same":[27,29,30,31,32,33,34],"related":[18,19,20,21,22,23,24,25,26,35,36,37,38,39,40,41,42,43,44]},{"id":29,"word":"coherent","pos":"adj","def":"logical and consistent; easy to follow","cluster":"clarity","same":[27,28,30,31,32,33,34],"related":[18,19,20,21,22,23,24,25,26,35,36,37,38,39,40,41,42,43,44]},{"id":30,"word":"articulate","pos":"adj","def":"able to express oneself fluently and clearly","cluster":"clarity","same":[27,28,29,31,32,33,34],"related":[18,19,20,21,22,23,24,25,26,35,36,37,38,39,40,41,42,43,44]},{"id":31,"word":"pellucid","pos":"adj","def":"translucently clear in style or meaning","cluster":"clarity","same":[27,28,29,30,32,33,34],"related":[18,19,20,21,22,23,24,25,26,35,36,37,38,39,40,41,42,43,44]},{"id":32,"word":"perspicuous","pos":"adj","def":"clearly expressed and easily understood","cluster":"clarity","same":[27,28,29,30,31,33,34],"related":[18,19,20,21,22,23,24,25,26,35,36,37,38,39,40,41,42,43,44]},{"id":33,"word":"trenchant","pos":"adj","def":"forceful and penetrating in expression or thought","cluster":"clarity","same":[27,28,29,30,31,32,34],"related":[18,19,20,21,22,23,24,25,26,35,36,37,38,39,40,41,42,43,44]},{"id":34,"word":"incisive","pos":"adj","def":"intelligently sharp and clear in analysis or expression","cluster":"clarity","same":[27,28,29,30,31,32,33],"related":[18,19,20,21,22,23,24,25,26,35,36,37,38,39,40,41,42,43,44]},{"id":35,"word":"ambiguous","pos":"adj","def":"open to more than one interpretation; unclear","cluster":"obscurity","same":[36,37,38,39,40,41,42,43,44],"related":[27,28,29,30,31,32,33,34]},{"id":36,"word":"equivocal","pos":"adj","def":"open to two or more interpretations; deliberately vague","cluster":"obscurity","same":[35,37,38,39,40,41,42,43,44],"related":[27,28,29,30,31,32,33,34]},{"id":37,"word":"cryptic","pos":"adj","def":"having a puzzling, hidden meaning that requires interpretation","cluster":"obscurity","same":[35,36,38,39,40,41,42,43,44],"related":[27,28,29,30,31,32,33,34]},{"id":38,"word":"opaque","pos":"adj","def":"hard to understand; not transparent","cluster":"obscurity","same":[35,36,37,39,40,41,42,43,44],"related":[27,28,29,30,31,32,33,34]},{"id":39,"word":"obscure","pos":"adj","def":"not clearly expressed or easily understood","cluster":"obscurity","same":[35,36,37,38,40,41,42,43,44],"related":[27,28,29,30,31,32,33,34]},{"id":40,"word":"esoteric","pos":"adj","def":"understood by only a small number of people with special knowledge","cluster":"obscurity","same":[35,36,37,38,39,41,42,43,44],"related":[27,28,29,30,31,32,33,34]},{"id":41,"word":"arcane","pos":"adj","def":"understood by very few; mysterious or secret","cluster":"obscurity","same":[35,36,37,38,39,40,42,43,44],"related":[27,28,29,30,31,32,33,34]},{"id":42,"word":"abstruse","pos":"adj","def":"difficult to understand because of its abstract complexity","cluster":"obscurity","same":[35,36,37,38,39,40,41,43,44],"related":[27,28,29,30,31,32,33,34]},{"id":43,"word":"enigmatic","pos":"adj","def":"difficult to interpret or understand; mysterious","cluster":"obscurity","same":[35,36,37,38,39,40,41,42,44],"related":[27,28,29,30,31,32,33,34]},{"id":44,"word":"nebulous","pos":"adj","def":"unclear, vague, or ill-defined","cluster":"obscurity","same":[35,36,37,38,39,40,41,42,43],"related":[27,28,29,30,31,32,33,34]},{"id":45,"word":"sycophantic","pos":"adj","def":"behaving obsequiously toward someone to gain advantage","cluster":"flattery","same":[46,47,48,49,50,51,52,53,54,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":46,"word":"obsequious","pos":"adj","def":"excessively eager to please or obey, often servilely so","cluster":"flattery","same":[45,47,48,49,50,51,52,53,54,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":47,"word":"fawning","pos":"adj","def":"seeking approval through excessive attention and compliments","cluster":"flattery","same":[45,46,48,49,50,51,52,53,54,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":48,"word":"servile","pos":"adj","def":"excessively willing to serve or please others","cluster":"flattery","same":[45,46,47,49,50,51,52,53,54,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":49,"word":"ingratiating","pos":"adj","def":"attempting to gain favor through deliberately pleasant behavior","cluster":"flattery","same":[45,46,47,48,50,51,52,53,54,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":50,"word":"adulation","pos":"noun","def":"excessive admiration or praise","cluster":"flattery","same":[45,46,47,48,49,51,52,53,54,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":51,"word":"unctuous","pos":"adj","def":"smoothly and excessively complimentary in a way that feels insincere","cluster":"flattery","same":[45,46,47,48,49,50,52,53,54,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":52,"word":"toady","pos":"noun","def":"a person who flatters someone important for personal gain","cluster":"flattery","same":[45,46,47,48,49,50,51,53,54,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":53,"word":"flattery","pos":"noun","def":"excessive and often insincere praise or compliments","cluster":"flattery","same":[45,46,47,48,49,50,51,52,54,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":54,"word":"blandishment","pos":"noun","def":"a smooth, coaxing compliment meant to win someone over","cluster":"flattery","same":[45,46,47,48,49,50,51,52,53,55],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":55,"word":"sycophancy","pos":"noun","def":"excessive, self-serving deference shown toward someone with power or influence","cluster":"flattery","same":[45,46,47,48,49,50,51,52,53,54],"related":[56,57,58,59,60,61,62,63,64,65]},{"id":56,"word":"admonish","pos":"verb","def":"warn or reprimand someone firmly","cluster":"criticism","same":[57,58,59,60,61,62,63,64,65],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":57,"word":"rebuke","pos":"verb","def":"express sharp disapproval or criticism","cluster":"criticism","same":[56,58,59,60,61,62,63,64,65],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":58,"word":"reprove","pos":"verb","def":"express disapproval of; criticize mildly","cluster":"criticism","same":[56,57,59,60,61,62,63,64,65],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":59,"word":"castigate","pos":"verb","def":"reprimand someone severely","cluster":"criticism","same":[56,57,58,60,61,62,63,64,65],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":60,"word":"chastise","pos":"verb","def":"scold or reprimand someone harshly, especially for wrongdoing","cluster":"criticism","same":[56,57,58,59,61,62,63,64,65],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":61,"word":"excoriate","pos":"verb","def":"criticize someone severely and harshly","cluster":"criticism","same":[56,57,58,59,60,62,63,64,65],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":62,"word":"vilify","pos":"verb","def":"speak or write about someone in an abusively disparaging way","cluster":"criticism","same":[56,57,58,59,60,61,63,64,65],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":63,"word":"disparage","pos":"verb","def":"regard or describe as being of little worth","cluster":"criticism","same":[56,57,58,59,60,61,62,64,65],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":64,"word":"deride","pos":"verb","def":"express contempt for; ridicule","cluster":"criticism","same":[56,57,58,59,60,61,62,63,65],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":65,"word":"denounce","pos":"verb","def":"publicly declare to be wrong or evil","cluster":"criticism","same":[56,57,58,59,60,61,62,63,64],"related":[45,46,47,48,49,50,51,52,53,54,55,66,67,68,69,70,71,72,73,74,75,76,77]},{"id":66,"word":"laud","pos":"verb","def":"praise highly","cluster":"praise","same":[67,68,69,70,71,72,73,74,75,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":67,"word":"extol","pos":"verb","def":"praise enthusiastically","cluster":"praise","same":[66,68,69,70,71,72,73,74,75,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":68,"word":"eulogize","pos":"verb","def":"praise highly, especially in a formal speech or piece of writing","cluster":"praise","same":[66,67,69,70,71,72,73,74,75,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":69,"word":"commend","pos":"verb","def":"praise formally or officially","cluster":"praise","same":[66,67,68,70,71,72,73,74,75,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":70,"word":"venerate","pos":"verb","def":"regard with great respect; revere","cluster":"praise","same":[66,67,68,69,71,72,73,74,75,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":71,"word":"acclaim","pos":"verb","def":"praise enthusiastically and publicly","cluster":"praise","same":[66,67,68,69,70,72,73,74,75,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":72,"word":"exalt","pos":"verb","def":"praise highly; elevate in rank or status","cluster":"praise","same":[66,67,68,69,70,71,73,74,75,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":73,"word":"encomium","pos":"noun","def":"a formal expression of high praise","cluster":"praise","same":[66,67,68,69,70,71,72,74,75,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":74,"word":"panegyric","pos":"noun","def":"a formal speech or piece of writing praising someone highly","cluster":"praise","same":[66,67,68,69,70,71,72,73,75,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":75,"word":"tribute","pos":"noun","def":"an act, statement, or gift intended to show gratitude or admiration","cluster":"praise","same":[66,67,68,69,70,71,72,73,74,76,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":76,"word":"accolade","pos":"noun","def":"an award or expression of praise for an achievement","cluster":"praise","same":[66,67,68,69,70,71,72,73,74,75,77],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":77,"word":"plaudit","pos":"noun","def":"an expression of praise or approval, especially for an achievement","cluster":"praise","same":[66,67,68,69,70,71,72,73,74,75,76],"related":[56,57,58,59,60,61,62,63,64,65,78,79,80,81,82,83,84,85,86,87]},{"id":78,"word":"sardonic","pos":"adj","def":"grimly mocking or cynical","cluster":"mockery","same":[79,80,81,82,83,84,85,86,87],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":79,"word":"sarcastic","pos":"adj","def":"using irony to mock or convey contempt","cluster":"mockery","same":[78,80,81,82,83,84,85,86,87],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":80,"word":"caustic","pos":"adj","def":"bitterly cutting in a way that stings, like a corrosive acid","cluster":"mockery","same":[78,79,81,82,83,84,85,86,87],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":81,"word":"mordant","pos":"adj","def":"sharply critical, often with a dark, biting wit","cluster":"mockery","same":[78,79,80,82,83,84,85,86,87],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":82,"word":"derisive","pos":"adj","def":"expressing contempt or ridicule","cluster":"mockery","same":[78,79,80,81,83,84,85,86,87],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":83,"word":"scathing","pos":"adj","def":"witheringly harsh and critical","cluster":"mockery","same":[78,79,80,81,82,84,85,86,87],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":84,"word":"satirical","pos":"adj","def":"using humor, irony, or exaggeration to criticize","cluster":"mockery","same":[78,79,80,81,82,83,85,86,87],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":85,"word":"facetious","pos":"adj","def":"treating serious issues with inappropriate humor","cluster":"mockery","same":[78,79,80,81,82,83,84,86,87],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":86,"word":"flippant","pos":"adj","def":"not showing a serious or respectful attitude","cluster":"mockery","same":[78,79,80,81,82,83,84,85,87],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":87,"word":"glib","pos":"adj","def":"fluent and voluble but insincere or superficial","cluster":"mockery","same":[78,79,80,81,82,83,84,85,86],"related":[66,67,68,69,70,71,72,73,74,75,76,77]},{"id":88,"word":"obstinate","pos":"adj","def":"stubbornly refusing to change one's opinion","cluster":"stubbornness","same":[89,90,91,92,93,94,95],"related":[104,105,106,107,108,109,110]},{"id":89,"word":"intransigent","pos":"adj","def":"unwilling to change one's views or come to an agreement","cluster":"stubbornness","same":[88,90,91,92,93,94,95],"related":[104,105,106,107,108,109,110]},{"id":90,"word":"recalcitrant","pos":"adj","def":"having an obstinately uncooperative attitude","cluster":"stubbornness","same":[88,89,91,92,93,94,95],"related":[104,105,106,107,108,109,110]},{"id":91,"word":"obdurate","pos":"adj","def":"stubbornly refusing to change one's mind","cluster":"stubbornness","same":[88,89,90,92,93,94,95],"related":[104,105,106,107,108,109,110]},{"id":92,"word":"adamant","pos":"adj","def":"refusing to be persuaded; firmly resolved","cluster":"stubbornness","same":[88,89,90,91,93,94,95],"related":[104,105,106,107,108,109,110]},{"id":93,"word":"inflexible","pos":"adj","def":"unwilling to change or compromise","cluster":"stubbornness","same":[88,89,90,91,92,94,95],"related":[104,105,106,107,108,109,110]},{"id":94,"word":"unyielding","pos":"adj","def":"not giving way; firm","cluster":"stubbornness","same":[88,89,90,91,92,93,95],"related":[104,105,106,107,108,109,110]},{"id":95,"word":"headstrong","pos":"adj","def":"determined to act on one's own will, ignoring advice","cluster":"stubbornness","same":[88,89,90,91,92,93,94],"related":[104,105,106,107,108,109,110]},{"id":96,"word":"tenacious","pos":"adj","def":"persisting firmly; not readily letting go","cluster":"persistence","same":[97,98,99,100,101,102,103],"related":[221,222,223,224,225,226,227,228]},{"id":97,"word":"resolute","pos":"adj","def":"admirably purposeful and determined","cluster":"persistence","same":[96,98,99,100,101,102,103],"related":[221,222,223,224,225,226,227,228]},{"id":98,"word":"steadfast","pos":"adj","def":"resolutely or dutifully firm and unwavering","cluster":"persistence","same":[96,97,99,100,101,102,103],"related":[221,222,223,224,225,226,227,228]},{"id":99,"word":"indefatigable","pos":"adj","def":"persisting tirelessly; never tiring","cluster":"persistence","same":[96,97,98,100,101,102,103],"related":[221,222,223,224,225,226,227,228]},{"id":100,"word":"dogged","pos":"adj","def":"persistent and determined","cluster":"persistence","same":[96,97,98,99,101,102,103],"related":[221,222,223,224,225,226,227,228]},{"id":101,"word":"assiduous","pos":"adj","def":"showing great care, attention, and perseverance","cluster":"persistence","same":[96,97,98,99,100,102,103],"related":[221,222,223,224,225,226,227,228]},{"id":102,"word":"diligent","pos":"adj","def":"showing care and conscientious effort","cluster":"persistence","same":[96,97,98,99,100,101,103],"related":[221,222,223,224,225,226,227,228]},{"id":103,"word":"sedulous","pos":"adj","def":"persistently and carefully industrious in one's efforts","cluster":"persistence","same":[96,97,98,99,100,101,102],"related":[221,222,223,224,225,226,227,228]},{"id":104,"word":"malleable","pos":"adj","def":"easily influenced or shaped","cluster":"flexibility","same":[105,106,107,108,109,110],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":105,"word":"adaptable","pos":"adj","def":"able to adjust readily to new conditions","cluster":"flexibility","same":[104,106,107,108,109,110],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":106,"word":"versatile","pos":"adj","def":"able to adapt to many different functions","cluster":"flexibility","same":[104,105,107,108,109,110],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":107,"word":"pliable","pos":"adj","def":"easily bent or influenced","cluster":"flexibility","same":[104,105,106,108,109,110],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":108,"word":"amenable","pos":"adj","def":"open and responsive to suggestion","cluster":"flexibility","same":[104,105,106,107,109,110],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":109,"word":"accommodating","pos":"adj","def":"willing to fulfill others' wishes","cluster":"flexibility","same":[104,105,106,107,108,110],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":110,"word":"tractable","pos":"adj","def":"easy to control or influence","cluster":"flexibility","same":[104,105,106,107,108,109],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":111,"word":"capricious","pos":"adj","def":"given to sudden, unaccountable changes of mood or behavior","cluster":"changeability","same":[112,113,114,115,116,117,118],"related":[96,97,98,99,100,101,102,103]},{"id":112,"word":"mercurial","pos":"adj","def":"subject to sudden or unpredictable changes","cluster":"changeability","same":[111,113,114,115,116,117,118],"related":[96,97,98,99,100,101,102,103]},{"id":113,"word":"fickle","pos":"adj","def":"changing frequently, especially in loyalties","cluster":"changeability","same":[111,112,114,115,116,117,118],"related":[96,97,98,99,100,101,102,103]},{"id":114,"word":"volatile","pos":"adj","def":"liable to change rapidly and unpredictably","cluster":"changeability","same":[111,112,113,115,116,117,118],"related":[96,97,98,99,100,101,102,103]},{"id":115,"word":"erratic","pos":"adj","def":"not consistent or regular in pattern","cluster":"changeability","same":[111,112,113,114,116,117,118],"related":[96,97,98,99,100,101,102,103]},{"id":116,"word":"whimsical","pos":"adj","def":"playfully quaint or fanciful, especially unpredictably so","cluster":"changeability","same":[111,112,113,114,115,117,118],"related":[96,97,98,99,100,101,102,103]},{"id":117,"word":"vacillating","pos":"adj","def":"wavering between different opinions or actions","cluster":"changeability","same":[111,112,113,114,115,116,118],"related":[96,97,98,99,100,101,102,103]},{"id":118,"word":"inconstant","pos":"adj","def":"frequently changing; not faithful or steady","cluster":"changeability","same":[111,112,113,114,115,116,117],"related":[96,97,98,99,100,101,102,103]},{"id":119,"word":"placid","pos":"adj","def":"not easily upset or excited; calm","cluster":"calm","same":[120,121,122,123,124,125,126],"related":[127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144]},{"id":120,"word":"serene","pos":"adj","def":"calm, peaceful, and untroubled","cluster":"calm","same":[119,121,122,123,124,125,126],"related":[127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144]},{"id":121,"word":"tranquil","pos":"adj","def":"free from disturbance; calm","cluster":"calm","same":[119,120,122,123,124,125,126],"related":[127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144]},{"id":122,"word":"unflappable","pos":"adj","def":"not easily upset or excited","cluster":"calm","same":[119,120,121,123,124,125,126],"related":[127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144]},{"id":123,"word":"equanimous","pos":"adj","def":"having equanimity; calm and composed, especially under pressure","cluster":"calm","same":[119,120,121,122,124,125,126],"related":[127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144]},{"id":124,"word":"stoic","pos":"adj","def":"enduring pain or hardship without showing feelings","cluster":"calm","same":[119,120,121,122,123,125,126],"related":[127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144]},{"id":125,"word":"imperturbable","pos":"adj","def":"unable to be upset or excited; calm","cluster":"calm","same":[119,120,121,122,123,124,126],"related":[127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144]},{"id":126,"word":"phlegmatic","pos":"adj","def":"having an unemotional, stolidly calm disposition","cluster":"calm","same":[119,120,121,122,123,124,125],"related":[127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144]},{"id":127,"word":"apprehensive","pos":"adj","def":"anxious or fearful about the future","cluster":"anxious","same":[128,129,130,131,132,133,134],"related":[119,120,121,122,123,124,125,126]},{"id":128,"word":"trepidation","pos":"noun","def":"a feeling of fear or anxiety about something that may happen","cluster":"anxious","same":[127,129,130,131,132,133,134],"related":[119,120,121,122,123,124,125,126]},{"id":129,"word":"diffident","pos":"adj","def":"modest or shy due to a lack of self-confidence","cluster":"anxious","same":[127,128,130,131,132,133,134],"related":[119,120,121,122,123,124,125,126]},{"id":130,"word":"timorous","pos":"adj","def":"showing or suffering from nervousness; timid","cluster":"anxious","same":[127,128,129,131,132,133,134],"related":[119,120,121,122,123,124,125,126]},{"id":131,"word":"perturbed","pos":"adj","def":"anxious or unsettled","cluster":"anxious","same":[127,128,129,130,132,133,134],"related":[119,120,121,122,123,124,125,126]},{"id":132,"word":"agitated","pos":"adj","def":"troubled, disturbed, or nervous","cluster":"anxious","same":[127,128,129,130,131,133,134],"related":[119,120,121,122,123,124,125,126]},{"id":133,"word":"jittery","pos":"adj","def":"nervous; unable to relax","cluster":"anxious","same":[127,128,129,130,131,132,134],"related":[119,120,121,122,123,124,125,126]},{"id":134,"word":"skittish","pos":"adj","def":"nervous and easily frightened","cluster":"anxious","same":[127,128,129,130,131,132,133],"related":[119,120,121,122,123,124,125,126]},{"id":135,"word":"irate","pos":"adj","def":"feeling or characterized by great anger","cluster":"angry","same":[136,137,138,139,140,141,142,143,144],"related":[119,120,121,122,123,124,125,126]},{"id":136,"word":"indignant","pos":"adj","def":"feeling or showing anger at perceived unfair treatment","cluster":"angry","same":[135,137,138,139,140,141,142,143,144],"related":[119,120,121,122,123,124,125,126]},{"id":137,"word":"livid","pos":"adj","def":"furiously angry","cluster":"angry","same":[135,136,138,139,140,141,142,143,144],"related":[119,120,121,122,123,124,125,126]},{"id":138,"word":"irascible","pos":"adj","def":"having a tendency to be easily angered","cluster":"angry","same":[135,136,137,139,140,141,142,143,144],"related":[119,120,121,122,123,124,125,126]},{"id":139,"word":"choleric","pos":"adj","def":"bad-tempered; irritable","cluster":"angry","same":[135,136,137,138,140,141,142,143,144],"related":[119,120,121,122,123,124,125,126]},{"id":140,"word":"splenetic","pos":"adj","def":"bad-tempered; spiteful","cluster":"angry","same":[135,136,137,138,139,141,142,143,144],"related":[119,120,121,122,123,124,125,126]},{"id":141,"word":"vitriolic","pos":"adj","def":"filled with bitter criticism or malice","cluster":"angry","same":[135,136,137,138,139,140,142,143,144],"related":[119,120,121,122,123,124,125,126]},{"id":142,"word":"acrimonious","pos":"adj","def":"bitter and angry, especially in tone","cluster":"angry","same":[135,136,137,138,139,140,141,143,144],"related":[119,120,121,122,123,124,125,126]},{"id":143,"word":"belligerent","pos":"adj","def":"hostile and aggressive","cluster":"angry","same":[135,136,137,138,139,140,141,142,144],"related":[119,120,121,122,123,124,125,126]},{"id":144,"word":"bellicose","pos":"adj","def":"demonstrating aggression and eagerness to fight","cluster":"angry","same":[135,136,137,138,139,140,141,142,143],"related":[119,120,121,122,123,124,125,126]},{"id":145,"word":"amiable","pos":"adj","def":"having a friendly and pleasant manner","cluster":"friendly","same":[146,147,148,149,150,151],"related":[152,153,154,155,156,157,158,159]},{"id":146,"word":"congenial","pos":"adj","def":"pleasant because of a personality similar to one's own","cluster":"friendly","same":[145,147,148,149,150,151],"related":[152,153,154,155,156,157,158,159]},{"id":147,"word":"affable","pos":"adj","def":"friendly, good-natured, and easy to talk to","cluster":"friendly","same":[145,146,148,149,150,151],"related":[152,153,154,155,156,157,158,159]},{"id":148,"word":"gregarious","pos":"adj","def":"fond of company; sociable","cluster":"friendly","same":[145,146,147,149,150,151],"related":[152,153,154,155,156,157,158,159]},{"id":149,"word":"convivial","pos":"adj","def":"friendly, lively, and enjoyable","cluster":"friendly","same":[145,146,147,148,150,151],"related":[152,153,154,155,156,157,158,159]},{"id":150,"word":"cordial","pos":"adj","def":"warm and friendly","cluster":"friendly","same":[145,146,147,148,149,151],"related":[152,153,154,155,156,157,158,159]},{"id":151,"word":"genial","pos":"adj","def":"friendly and cheerful","cluster":"friendly","same":[145,146,147,148,149,150],"related":[152,153,154,155,156,157,158,159]},{"id":152,"word":"aloof","pos":"adj","def":"not friendly or forthcoming; distant","cluster":"unfriendly","same":[153,154,155,156,157,158,159],"related":[145,146,147,148,149,150,151]},{"id":153,"word":"reclusive","pos":"adj","def":"avoiding the company of others; solitary","cluster":"unfriendly","same":[152,154,155,156,157,158,159],"related":[145,146,147,148,149,150,151]},{"id":154,"word":"misanthropic","pos":"adj","def":"disliking humankind","cluster":"unfriendly","same":[152,153,155,156,157,158,159],"related":[145,146,147,148,149,150,151]},{"id":155,"word":"churlish","pos":"adj","def":"rude in a mean-spirited way","cluster":"unfriendly","same":[152,153,154,156,157,158,159],"related":[145,146,147,148,149,150,151]},{"id":156,"word":"surly","pos":"adj","def":"bad-tempered and unfriendly","cluster":"unfriendly","same":[152,153,154,155,157,158,159],"related":[145,146,147,148,149,150,151]},{"id":157,"word":"curmudgeonly","pos":"adj","def":"bad-tempered, especially in an older person","cluster":"unfriendly","same":[152,153,154,155,156,158,159],"related":[145,146,147,148,149,150,151]},{"id":158,"word":"standoffish","pos":"adj","def":"cold or distant in manner","cluster":"unfriendly","same":[152,153,154,155,156,157,159],"related":[145,146,147,148,149,150,151]},{"id":159,"word":"brusque","pos":"adj","def":"abrupt or curt in speech or manner","cluster":"unfriendly","same":[152,153,154,155,156,157,158],"related":[145,146,147,148,149,150,151]},{"id":160,"word":"munificent","pos":"adj","def":"extremely generous","cluster":"generous","same":[161,162,163,164,165,166],"related":[167,168,169,170,171,172,173,174]},{"id":161,"word":"magnanimous","pos":"adj","def":"generous or forgiving, especially toward a rival","cluster":"generous","same":[160,162,163,164,165,166],"related":[167,168,169,170,171,172,173,174]},{"id":162,"word":"philanthropic","pos":"adj","def":"seeking to promote the welfare of others; generous","cluster":"generous","same":[160,161,163,164,165,166],"related":[167,168,169,170,171,172,173,174]},{"id":163,"word":"altruistic","pos":"adj","def":"showing selfless concern for the well-being of others","cluster":"generous","same":[160,161,162,164,165,166],"related":[167,168,169,170,171,172,173,174]},{"id":164,"word":"benevolent","pos":"adj","def":"well-meaning and kindly","cluster":"generous","same":[160,161,162,163,165,166],"related":[167,168,169,170,171,172,173,174]},{"id":165,"word":"charitable","pos":"adj","def":"generous in giving to those in need","cluster":"generous","same":[160,161,162,163,164,166],"related":[167,168,169,170,171,172,173,174]},{"id":166,"word":"unstinting","pos":"adj","def":"given or giving generously and without restraint","cluster":"generous","same":[160,161,162,163,164,165],"related":[167,168,169,170,171,172,173,174]},{"id":167,"word":"avaricious","pos":"adj","def":"having an extreme greed for wealth","cluster":"stingy","same":[168,169,170,171,172,173,174],"related":[160,161,162,163,164,165,166]},{"id":168,"word":"miserly","pos":"adj","def":"extremely unwilling to spend money","cluster":"stingy","same":[167,169,170,171,172,173,174],"related":[160,161,162,163,164,165,166]},{"id":169,"word":"parsimonious","pos":"adj","def":"stingy to the point of being unwilling to spend even a little","cluster":"stingy","same":[167,168,170,171,172,173,174],"related":[160,161,162,163,164,165,166]},{"id":170,"word":"covetous","pos":"adj","def":"having a strong desire for something owned by another","cluster":"stingy","same":[167,168,169,171,172,173,174],"related":[160,161,162,163,164,165,166]},{"id":171,"word":"rapacious","pos":"adj","def":"aggressively greedy or grasping","cluster":"stingy","same":[167,168,169,170,172,173,174],"related":[160,161,162,163,164,165,166]},{"id":172,"word":"venal","pos":"adj","def":"showing a willingness to be bribed; corruptible","cluster":"stingy","same":[167,168,169,170,171,173,174],"related":[160,161,162,163,164,165,166]},{"id":173,"word":"mercenary","pos":"adj","def":"motivated primarily by a desire for money","cluster":"stingy","same":[167,168,169,170,171,172,174],"related":[160,161,162,163,164,165,166]},{"id":174,"word":"frugal","pos":"adj","def":"sparing or economical with money or resources","cluster":"stingy","same":[167,168,169,170,171,172,173],"related":[160,161,162,163,164,165,166]},{"id":175,"word":"candid","pos":"adj","def":"truthful and straightforward, even when it's unflattering","cluster":"honest","same":[176,177,178,179,180,181],"related":[182,183,184,185,186,187,188,189,190]},{"id":176,"word":"forthright","pos":"adj","def":"direct and outspoken","cluster":"honest","same":[175,177,178,179,180,181],"related":[182,183,184,185,186,187,188,189,190]},{"id":177,"word":"guileless","pos":"adj","def":"innocent and without deception","cluster":"honest","same":[175,176,178,179,180,181],"related":[182,183,184,185,186,187,188,189,190]},{"id":178,"word":"ingenuous","pos":"adj","def":"openly innocent and unsuspecting, without any guile","cluster":"honest","same":[175,176,177,179,180,181],"related":[182,183,184,185,186,187,188,189,190]},{"id":179,"word":"veracious","pos":"adj","def":"speaking or representing the truth; truthful","cluster":"honest","same":[175,176,177,178,180,181],"related":[182,183,184,185,186,187,188,189,190]},{"id":180,"word":"artless","pos":"adj","def":"without cunning or deceit; natural and simple","cluster":"honest","same":[175,176,177,178,179,181],"related":[182,183,184,185,186,187,188,189,190]},{"id":181,"word":"frank","pos":"adj","def":"open, honest, and direct in speech","cluster":"honest","same":[175,176,177,178,179,180],"related":[182,183,184,185,186,187,188,189,190]},{"id":182,"word":"duplicitous","pos":"adj","def":"deceitful; given to double-dealing","cluster":"deceitful","same":[183,184,185,186,187,188,189,190],"related":[175,176,177,178,179,180,181]},{"id":183,"word":"disingenuous","pos":"adj","def":"not candid; giving a false impression of sincerity","cluster":"deceitful","same":[182,184,185,186,187,188,189,190],"related":[175,176,177,178,179,180,181]},{"id":184,"word":"surreptitious","pos":"adj","def":"kept secret, especially because it would not be approved of","cluster":"deceitful","same":[182,183,185,186,187,188,189,190],"related":[175,176,177,178,179,180,181]},{"id":185,"word":"devious","pos":"adj","def":"showing skill in achieving one's ends by indirect or deceitful methods","cluster":"deceitful","same":[182,183,184,186,187,188,189,190],"related":[175,176,177,178,179,180,181]},{"id":186,"word":"furtive","pos":"adj","def":"attempting to avoid notice, typically because of guilt","cluster":"deceitful","same":[182,183,184,185,187,188,189,190],"related":[175,176,177,178,179,180,181]},{"id":187,"word":"cunning","pos":"adj","def":"skilled in achieving one's ends through deceit","cluster":"deceitful","same":[182,183,184,185,186,188,189,190],"related":[175,176,177,178,179,180,181]},{"id":188,"word":"wily","pos":"adj","def":"skilled at gaining an advantage through deceit","cluster":"deceitful","same":[182,183,184,185,186,187,189,190],"related":[175,176,177,178,179,180,181]},{"id":189,"word":"guile","pos":"noun","def":"crafty, calculated behavior used to trick or manipulate people","cluster":"deceitful","same":[182,183,184,185,186,187,188,190],"related":[175,176,177,178,179,180,181]},{"id":190,"word":"machiavellian","pos":"adj","def":"willing to use scheming or unscrupulous means to gain power","cluster":"deceitful","same":[182,183,184,185,186,187,188,189],"related":[175,176,177,178,179,180,181]},{"id":191,"word":"haughty","pos":"adj","def":"arrogantly superior and disdainful","cluster":"arrogant","same":[192,193,194,195,196,197,198],"related":[199,200,201,202,203,204,205]},{"id":192,"word":"pompous","pos":"adj","def":"affectedly grand or self-important","cluster":"arrogant","same":[191,193,194,195,196,197,198],"related":[199,200,201,202,203,204,205]},{"id":193,"word":"imperious","pos":"adj","def":"assuming power or authority without justification; domineering","cluster":"arrogant","same":[191,192,194,195,196,197,198],"related":[199,200,201,202,203,204,205]},{"id":194,"word":"supercilious","pos":"adj","def":"behaving as if superior to others; disdainful","cluster":"arrogant","same":[191,192,193,195,196,197,198],"related":[199,200,201,202,203,204,205]},{"id":195,"word":"condescending","pos":"adj","def":"showing an attitude of superiority toward others","cluster":"arrogant","same":[191,192,193,194,196,197,198],"related":[199,200,201,202,203,204,205]},{"id":196,"word":"pretentious","pos":"adj","def":"attempting to impress by affecting greater importance than one has","cluster":"arrogant","same":[191,192,193,194,195,197,198],"related":[199,200,201,202,203,204,205]},{"id":197,"word":"grandiose","pos":"adj","def":"impressive or affectedly grand","cluster":"arrogant","same":[191,192,193,194,195,196,198],"related":[199,200,201,202,203,204,205]},{"id":198,"word":"vainglorious","pos":"adj","def":"excessively proud of oneself; boastful","cluster":"arrogant","same":[191,192,193,194,195,196,197],"related":[199,200,201,202,203,204,205]},{"id":199,"word":"modest","pos":"adj","def":"having a moderate estimation of one's own abilities or achievements","cluster":"humble","same":[200,201,202,203,204,205],"related":[191,192,193,194,195,196,197,198]},{"id":200,"word":"unassuming","pos":"adj","def":"not pretentious or showy; keeping a low profile","cluster":"humble","same":[199,201,202,203,204,205],"related":[191,192,193,194,195,196,197,198]},{"id":201,"word":"unpretentious","pos":"adj","def":"plain and simple; making no attempt to impress others","cluster":"humble","same":[199,200,202,203,204,205],"related":[191,192,193,194,195,196,197,198]},{"id":202,"word":"demure","pos":"adj","def":"reserved and shy in a quiet, decorous manner","cluster":"humble","same":[199,200,201,203,204,205],"related":[191,192,193,194,195,196,197,198]},{"id":203,"word":"meek","pos":"adj","def":"quiet, gentle, and submissive; humble in spirit","cluster":"humble","same":[199,200,201,202,204,205],"related":[191,192,193,194,195,196,197,198]},{"id":204,"word":"self-effacing","pos":"adj","def":"deliberately playing down one's own importance or achievements","cluster":"humble","same":[199,200,201,202,203,205],"related":[191,192,193,194,195,196,197,198]},{"id":205,"word":"unobtrusive","pos":"adj","def":"not conspicuous or attracting attention","cluster":"humble","same":[199,200,201,202,203,204],"related":[191,192,193,194,195,196,197,198]},{"id":206,"word":"audacious","pos":"adj","def":"showing a willingness to take bold risks","cluster":"bold","same":[207,208,209,210,211,212,213],"related":[214,215,216,217,218,219,220]},{"id":207,"word":"intrepid","pos":"adj","def":"fearless; adventurous","cluster":"bold","same":[206,208,209,210,211,212,213],"related":[214,215,216,217,218,219,220]},{"id":208,"word":"valiant","pos":"adj","def":"possessing or showing courage","cluster":"bold","same":[206,207,209,210,211,212,213],"related":[214,215,216,217,218,219,220]},{"id":209,"word":"dauntless","pos":"adj","def":"showing fearlessness and determination","cluster":"bold","same":[206,207,208,210,211,212,213],"related":[214,215,216,217,218,219,220]},{"id":210,"word":"indomitable","pos":"adj","def":"impossible to subdue or defeat","cluster":"bold","same":[206,207,208,209,211,212,213],"related":[214,215,216,217,218,219,220]},{"id":211,"word":"brazen","pos":"adj","def":"bold and without shame","cluster":"bold","same":[206,207,208,209,210,212,213],"related":[214,215,216,217,218,219,220]},{"id":212,"word":"gallant","pos":"adj","def":"brave, especially in a courteous, chivalrous way","cluster":"bold","same":[206,207,208,209,210,211,213],"related":[214,215,216,217,218,219,220]},{"id":213,"word":"plucky","pos":"adj","def":"having courage and determination","cluster":"bold","same":[206,207,208,209,210,211,212],"related":[214,215,216,217,218,219,220]},{"id":214,"word":"craven","pos":"adj","def":"contemptibly lacking in courage","cluster":"cowardly","same":[215,216,217,218,219,220],"related":[206,207,208,209,210,211,212,213]},{"id":215,"word":"pusillanimous","pos":"adj","def":"showing a shameful lack of courage or resolve","cluster":"cowardly","same":[214,216,217,218,219,220],"related":[206,207,208,209,210,211,212,213]},{"id":216,"word":"faint-hearted","pos":"adj","def":"lacking courage or resolution","cluster":"cowardly","same":[214,215,217,218,219,220],"related":[206,207,208,209,210,211,212,213]},{"id":217,"word":"cowering","pos":"adj","def":"crouching or shrinking back in fear","cluster":"cowardly","same":[214,215,216,218,219,220],"related":[206,207,208,209,210,211,212,213]},{"id":218,"word":"spineless","pos":"adj","def":"lacking courage or determination","cluster":"cowardly","same":[214,215,216,217,219,220],"related":[206,207,208,209,210,211,212,213]},{"id":219,"word":"mousy","pos":"adj","def":"meek and unassertive in a quiet, retiring way","cluster":"cowardly","same":[214,215,216,217,218,220],"related":[206,207,208,209,210,211,212,213]},{"id":220,"word":"timid","pos":"adj","def":"showing a lack of courage or confidence","cluster":"cowardly","same":[214,215,216,217,218,219],"related":[206,207,208,209,210,211,212,213]},{"id":221,"word":"indolent","pos":"adj","def":"wanting to avoid activity or exertion; lazy","cluster":"lazy","same":[222,223,224,225,226,227,228],"related":[229,230,231,232,233,234,235,236]},{"id":222,"word":"lethargic","pos":"adj","def":"sluggish and lacking energy or enthusiasm","cluster":"lazy","same":[221,223,224,225,226,227,228],"related":[229,230,231,232,233,234,235,236]},{"id":223,"word":"languid","pos":"adj","def":"displaying a disinclination for physical exertion; slow","cluster":"lazy","same":[221,222,224,225,226,227,228],"related":[229,230,231,232,233,234,235,236]},{"id":224,"word":"torpid","pos":"adj","def":"sluggish and mentally slow, as if half-asleep","cluster":"lazy","same":[221,222,223,225,226,227,228],"related":[229,230,231,232,233,234,235,236]},{"id":225,"word":"listless","pos":"adj","def":"lacking energy or enthusiasm","cluster":"lazy","same":[221,222,223,224,226,227,228],"related":[229,230,231,232,233,234,235,236]},{"id":226,"word":"slothful","pos":"adj","def":"lazy; disinclined to activity or exertion","cluster":"lazy","same":[221,222,223,224,225,227,228],"related":[229,230,231,232,233,234,235,236]},{"id":227,"word":"lackadaisical","pos":"adj","def":"lacking enthusiasm and thoroughness; carelessly lazy","cluster":"lazy","same":[221,222,223,224,225,226,228],"related":[229,230,231,232,233,234,235,236]},{"id":228,"word":"somnolent","pos":"adj","def":"sleepy; drowsy","cluster":"lazy","same":[221,222,223,224,225,226,227],"related":[229,230,231,232,233,234,235,236]},{"id":229,"word":"vigorous","pos":"adj","def":"strong, healthy, and full of energy","cluster":"energetic","same":[230,231,232,233,234,235,236],"related":[221,222,223,224,225,226,227,228]},{"id":230,"word":"industrious","pos":"adj","def":"diligent and hard-working","cluster":"energetic","same":[229,231,232,233,234,235,236],"related":[221,222,223,224,225,226,227,228]},{"id":231,"word":"dynamic","pos":"adj","def":"characterized by constant, productive activity or change","cluster":"energetic","same":[229,230,232,233,234,235,236],"related":[221,222,223,224,225,226,227,228]},{"id":232,"word":"zealous","pos":"adj","def":"having or showing great energy and enthusiasm","cluster":"energetic","same":[229,230,231,233,234,235,236],"related":[221,222,223,224,225,226,227,228]},{"id":233,"word":"ebullient","pos":"adj","def":"cheerful and full of energy","cluster":"energetic","same":[229,230,231,232,234,235,236],"related":[221,222,223,224,225,226,227,228]},{"id":234,"word":"exuberant","pos":"adj","def":"full of energy, excitement, and enthusiasm","cluster":"energetic","same":[229,230,231,232,233,235,236],"related":[221,222,223,224,225,226,227,228]},{"id":235,"word":"animated","pos":"adj","def":"full of life or excitement","cluster":"energetic","same":[229,230,231,232,233,234,236],"related":[221,222,223,224,225,226,227,228]},{"id":236,"word":"spirited","pos":"adj","def":"full of energy, enthusiasm, and determination","cluster":"energetic","same":[229,230,231,232,233,234,235],"related":[221,222,223,224,225,226,227,228]},{"id":237,"word":"skeptical","pos":"adj","def":"not easily convinced; having doubts","cluster":"skeptical","same":[238,239,240,241,242,243],"related":[244,245,246,247,248,249]},{"id":238,"word":"dubious","pos":"adj","def":"hesitating or doubting","cluster":"skeptical","same":[237,239,240,241,242,243],"related":[244,245,246,247,248,249]},{"id":239,"word":"incredulous","pos":"adj","def":"unwilling or unable to believe something","cluster":"skeptical","same":[237,238,240,241,242,243],"related":[244,245,246,247,248,249]},{"id":240,"word":"wary","pos":"adj","def":"feeling or showing caution about possible dangers","cluster":"skeptical","same":[237,238,239,241,242,243],"related":[244,245,246,247,248,249]},{"id":241,"word":"suspicious","pos":"adj","def":"having or showing a cautious distrust of someone","cluster":"skeptical","same":[237,238,239,240,242,243],"related":[244,245,246,247,248,249]},{"id":242,"word":"distrustful","pos":"adj","def":"inclined to doubt someone's honesty","cluster":"skeptical","same":[237,238,239,240,241,243],"related":[244,245,246,247,248,249]},{"id":243,"word":"cynical","pos":"adj","def":"believing that people are motivated mainly by self-interest","cluster":"skeptical","same":[237,238,239,240,241,242],"related":[244,245,246,247,248,249]},{"id":244,"word":"gullible","pos":"adj","def":"easily persuaded to believe something; easily deceived","cluster":"gullible","same":[245,246,247,248,249],"related":[237,238,239,240,241,242,243]},{"id":245,"word":"credulous","pos":"adj","def":"too ready to believe things; easily convinced","cluster":"gullible","same":[244,246,247,248,249],"related":[237,238,239,240,241,242,243]},{"id":246,"word":"naive","pos":"adj","def":"showing a lack of experience or sophistication","cluster":"gullible","same":[244,245,247,248,249],"related":[237,238,239,240,241,242,243]},{"id":247,"word":"unsuspecting","pos":"adj","def":"not aware of or alert to any danger or deception","cluster":"gullible","same":[244,245,246,248,249],"related":[237,238,239,240,241,242,243]},{"id":248,"word":"trusting","pos":"adj","def":"inclined to believe others are honest or reliable","cluster":"gullible","same":[244,245,246,247,249],"related":[237,238,239,240,241,242,243]},{"id":249,"word":"unwary","pos":"adj","def":"not cautious; easily deceived","cluster":"gullible","same":[244,245,246,247,248],"related":[237,238,239,240,241,242,243]},{"id":250,"word":"sagacious","pos":"adj","def":"having or showing keen judgment; wise","cluster":"wise","same":[251,252,253,254,255,256,257],"related":[258,259,260,261,262,263,264]},{"id":251,"word":"astute","pos":"adj","def":"having a sharp, accurate judgment of people and situations","cluster":"wise","same":[250,252,253,254,255,256,257],"related":[258,259,260,261,262,263,264]},{"id":252,"word":"perspicacious","pos":"adj","def":"having a keen mental sharpness that sees past surface appearances","cluster":"wise","same":[250,251,253,254,255,256,257],"related":[258,259,260,261,262,263,264]},{"id":253,"word":"discerning","pos":"adj","def":"showing good judgment, especially about people or art","cluster":"wise","same":[250,251,252,254,255,256,257],"related":[258,259,260,261,262,263,264]},{"id":254,"word":"judicious","pos":"adj","def":"having, showing, or done with good judgment; sensible","cluster":"wise","same":[250,251,252,253,255,256,257],"related":[258,259,260,261,262,263,264]},{"id":255,"word":"prudent","pos":"adj","def":"acting with care and thought for the future","cluster":"wise","same":[250,251,252,253,254,256,257],"related":[258,259,260,261,262,263,264]},{"id":256,"word":"shrewd","pos":"adj","def":"showing practical cleverness, especially in business or dealings","cluster":"wise","same":[250,251,252,253,254,255,257],"related":[258,259,260,261,262,263,264]},{"id":257,"word":"perceptive","pos":"adj","def":"having keen insight or intuition","cluster":"wise","same":[250,251,252,253,254,255,256],"related":[258,259,260,261,262,263,264]},{"id":258,"word":"fatuous","pos":"adj","def":"silly and pointless","cluster":"foolish","same":[259,260,261,262,263,264],"related":[250,251,252,253,254,255,256,257,429,430,431,432,433,434,435]},{"id":259,"word":"inane","pos":"adj","def":"silly; lacking sense or substance","cluster":"foolish","same":[258,260,261,262,263,264],"related":[250,251,252,253,254,255,256,257,429,430,431,432,433,434,435]},{"id":260,"word":"asinine","pos":"adj","def":"extremely foolish or stupid","cluster":"foolish","same":[258,259,261,262,263,264],"related":[250,251,252,253,254,255,256,257,429,430,431,432,433,434,435]},{"id":261,"word":"puerile","pos":"adj","def":"childishly silly and trivial","cluster":"foolish","same":[258,259,260,262,263,264],"related":[250,251,252,253,254,255,256,257,429,430,431,432,433,434,435]},{"id":262,"word":"imprudent","pos":"adj","def":"not showing care for the consequences; rash","cluster":"foolish","same":[258,259,260,261,263,264],"related":[250,251,252,253,254,255,256,257,429,430,431,432,433,434,435]},{"id":263,"word":"injudicious","pos":"adj","def":"showing poor judgment; unwise","cluster":"foolish","same":[258,259,260,261,262,264],"related":[250,251,252,253,254,255,256,257,429,430,431,432,433,434,435]},{"id":264,"word":"obtuse","pos":"adj","def":"annoyingly insensitive or slow to understand","cluster":"foolish","same":[258,259,260,261,262,263],"related":[250,251,252,253,254,255,256,257,429,430,431,432,433,434,435]},{"id":265,"word":"buoyant","pos":"adj","def":"cheerful and optimistic","cluster":"cheerful","same":[266,267,268,269,270,271],"related":[272,273,274,275,276,277,278,279]},{"id":266,"word":"jovial","pos":"adj","def":"cheerful and friendly","cluster":"cheerful","same":[265,267,268,269,270,271],"related":[272,273,274,275,276,277,278,279]},{"id":267,"word":"jubilant","pos":"adj","def":"feeling or expressing great happiness and triumph","cluster":"cheerful","same":[265,266,268,269,270,271],"related":[272,273,274,275,276,277,278,279]},{"id":268,"word":"sanguine","pos":"adj","def":"optimistic or positive, especially in a difficult situation","cluster":"cheerful","same":[265,266,267,269,270,271],"related":[272,273,274,275,276,277,278,279]},{"id":269,"word":"exultant","pos":"adj","def":"triumphantly happy","cluster":"cheerful","same":[265,266,267,268,270,271],"related":[272,273,274,275,276,277,278,279]},{"id":270,"word":"effervescent","pos":"adj","def":"vivacious, enthusiastic, and bubbly","cluster":"cheerful","same":[265,266,267,268,269,271],"related":[272,273,274,275,276,277,278,279]},{"id":271,"word":"elated","pos":"adj","def":"extremely happy and excited","cluster":"cheerful","same":[265,266,267,268,269,270],"related":[272,273,274,275,276,277,278,279]},{"id":272,"word":"morose","pos":"adj","def":"sullen and ill-tempered","cluster":"gloomy","same":[273,274,275,276,277,278,279],"related":[265,266,267,268,269,270,271]},{"id":273,"word":"somber","pos":"adj","def":"dark, dull, or gravely serious in mood","cluster":"gloomy","same":[272,274,275,276,277,278,279],"related":[265,266,267,268,269,270,271]},{"id":274,"word":"melancholic","pos":"adj","def":"sad and thoughtful; given to sadness","cluster":"gloomy","same":[272,273,275,276,277,278,279],"related":[265,266,267,268,269,270,271]},{"id":275,"word":"lugubrious","pos":"adj","def":"looking or sounding sad and dismal","cluster":"gloomy","same":[272,273,274,276,277,278,279],"related":[265,266,267,268,269,270,271]},{"id":276,"word":"doleful","pos":"adj","def":"expressing sorrow; mournful","cluster":"gloomy","same":[272,273,274,275,277,278,279],"related":[265,266,267,268,269,270,271]},{"id":277,"word":"dour","pos":"adj","def":"relentlessly severe, stern, or gloomy","cluster":"gloomy","same":[272,273,274,275,276,278,279],"related":[265,266,267,268,269,270,271]},{"id":278,"word":"despondent","pos":"adj","def":"in low spirits from loss of hope or courage","cluster":"gloomy","same":[272,273,274,275,276,277,279],"related":[265,266,267,268,269,270,271]},{"id":279,"word":"forlorn","pos":"adj","def":"pitifully sad and abandoned or lonely","cluster":"gloomy","same":[272,273,274,275,276,277,278],"related":[265,266,267,268,269,270,271]},{"id":280,"word":"impartial","pos":"adj","def":"treating all rivals or disputants equally; fair","cluster":"impartial","same":[281,282,283,284,285,286],"related":[287,288,289,290,291,292]},{"id":281,"word":"unbiased","pos":"adj","def":"showing no prejudice; fair","cluster":"impartial","same":[280,282,283,284,285,286],"related":[287,288,289,290,291,292]},{"id":282,"word":"objective","pos":"adj","def":"not influenced by personal feelings; fair","cluster":"impartial","same":[280,281,283,284,285,286],"related":[287,288,289,290,291,292]},{"id":283,"word":"equitable","pos":"adj","def":"fair to all parties, especially in the just distribution of something","cluster":"impartial","same":[280,281,282,284,285,286],"related":[287,288,289,290,291,292]},{"id":284,"word":"dispassionate","pos":"adj","def":"not influenced by strong emotion; rational and calm","cluster":"impartial","same":[280,281,282,283,285,286],"related":[287,288,289,290,291,292]},{"id":285,"word":"neutral","pos":"adj","def":"not aligned with or supporting any side","cluster":"impartial","same":[280,281,282,283,284,286],"related":[287,288,289,290,291,292]},{"id":286,"word":"even-handed","pos":"adj","def":"treating everyone the same way, without favoring one side","cluster":"impartial","same":[280,281,282,283,284,285],"related":[287,288,289,290,291,292]},{"id":287,"word":"partisan","pos":"adj","def":"strongly favoring one party or cause over others","cluster":"biased","same":[288,289,290,291,292],"related":[280,281,282,283,284,285,286]},{"id":288,"word":"tendentious","pos":"adj","def":"expressing a strong, biased point of view","cluster":"biased","same":[287,289,290,291,292],"related":[280,281,282,283,284,285,286]},{"id":289,"word":"prejudiced","pos":"adj","def":"having a preconceived opinion not based on reason","cluster":"biased","same":[287,288,290,291,292],"related":[280,281,282,283,284,285,286]},{"id":290,"word":"one-sided","pos":"adj","def":"favoring one side excessively; biased","cluster":"biased","same":[287,288,289,291,292],"related":[280,281,282,283,284,285,286]},{"id":291,"word":"bigoted","pos":"adj","def":"obstinately and unreasonably attached to a belief or view","cluster":"biased","same":[287,288,289,290,292],"related":[280,281,282,283,284,285,286]},{"id":292,"word":"parochial","pos":"adj","def":"having a limited or narrow outlook or scope","cluster":"biased","same":[287,288,289,290,291],"related":[280,281,282,283,284,285,286]},{"id":293,"word":"clandestine","pos":"adj","def":"done secretively, especially because illicit","cluster":"secretive","same":[294,295,296,297,298,299],"related":[300,301,302,303,304,305]},{"id":294,"word":"covert","pos":"adj","def":"not openly acknowledged or displayed; secret","cluster":"secretive","same":[293,295,296,297,298,299],"related":[300,301,302,303,304,305]},{"id":295,"word":"stealthy","pos":"adj","def":"cautious and surreptitious in action","cluster":"secretive","same":[293,294,296,297,298,299],"related":[300,301,302,303,304,305]},{"id":296,"word":"veiled","pos":"adj","def":"partially disguised or concealed","cluster":"secretive","same":[293,294,295,297,298,299],"related":[300,301,302,303,304,305]},{"id":297,"word":"undercover","pos":"adj","def":"done or working secretly","cluster":"secretive","same":[293,294,295,296,298,299],"related":[300,301,302,303,304,305]},{"id":298,"word":"underhanded","pos":"adj","def":"acting in a secret or dishonest way","cluster":"secretive","same":[293,294,295,296,297,299],"related":[300,301,302,303,304,305]},{"id":299,"word":"secretive","pos":"adj","def":"inclined to conceal feelings, activities, or information","cluster":"secretive","same":[293,294,295,296,297,298],"related":[300,301,302,303,304,305]},{"id":300,"word":"transparent","pos":"adj","def":"easy to perceive or detect; open and honest","cluster":"open","same":[301,302,303,304,305],"related":[175,176,177,178,179,180,181,293,294,295,296,297,298,299]},{"id":301,"word":"forthcoming","pos":"adj","def":"willing to give information; open","cluster":"open","same":[300,302,303,304,305],"related":[175,176,177,178,179,180,181,293,294,295,296,297,298,299]},{"id":302,"word":"overt","pos":"adj","def":"done or shown openly; not secret","cluster":"open","same":[300,301,303,304,305],"related":[175,176,177,178,179,180,181,293,294,295,296,297,298,299]},{"id":303,"word":"unreserved","pos":"adj","def":"without reservations; completely open and frank","cluster":"open","same":[300,301,302,304,305],"related":[175,176,177,178,179,180,181,293,294,295,296,297,298,299]},{"id":304,"word":"outspoken","pos":"adj","def":"direct and forthright in speech","cluster":"open","same":[300,301,302,303,305],"related":[175,176,177,178,179,180,181,293,294,295,296,297,298,299]},{"id":305,"word":"plainspoken","pos":"adj","def":"speaking in a simple, direct way","cluster":"open","same":[300,301,302,303,304],"related":[175,176,177,178,179,180,181,293,294,295,296,297,298,299]},{"id":306,"word":"plethora","pos":"noun","def":"a large or excessive amount of something","cluster":"abundant","same":[307,308,309,310,311,312],"related":[313,314,315,316,317,318,319,320,321,322]},{"id":307,"word":"myriad","pos":"adj","def":"a countless or extremely great number of","cluster":"abundant","same":[306,308,309,310,311,312],"related":[313,314,315,316,317,318,319,320,321,322]},{"id":308,"word":"copious","pos":"adj","def":"present in large amounts; plentiful and generous in supply","cluster":"abundant","same":[306,307,309,310,311,312],"related":[313,314,315,316,317,318,319,320,321,322]},{"id":309,"word":"abundant","pos":"adj","def":"existing in large quantities; plentiful","cluster":"abundant","same":[306,307,308,310,311,312],"related":[313,314,315,316,317,318,319,320,321,322]},{"id":310,"word":"profuse","pos":"adj","def":"given or occurring in overflowing amounts, often to excess","cluster":"abundant","same":[306,307,308,309,311,312],"related":[313,314,315,316,317,318,319,320,321,322]},{"id":311,"word":"prolific","pos":"adj","def":"producing a large output or number of something, especially works","cluster":"abundant","same":[306,307,308,309,310,312],"related":[313,314,315,316,317,318,319,320,321,322]},{"id":312,"word":"teeming","pos":"adj","def":"full of or swarming with something","cluster":"abundant","same":[306,307,308,309,310,311],"related":[313,314,315,316,317,318,319,320,321,322]},{"id":313,"word":"scarce","pos":"adj","def":"insufficient for demand; rare","cluster":"scarce","same":[314,315,316,317,318,319,320,321,322],"related":[306,307,308,309,310,311,312]},{"id":314,"word":"sparse","pos":"adj","def":"thinly dispersed or scattered","cluster":"scarce","same":[313,315,316,317,318,319,320,321,322],"related":[306,307,308,309,310,311,312]},{"id":315,"word":"meager","pos":"adj","def":"lacking in quantity or quality","cluster":"scarce","same":[313,314,316,317,318,319,320,321,322],"related":[306,307,308,309,310,311,312]},{"id":316,"word":"paucity","pos":"noun","def":"the presence of something in only small or insufficient quantities","cluster":"scarce","same":[313,314,315,317,318,319,320,321,322],"related":[306,307,308,309,310,311,312]},{"id":317,"word":"dearth","pos":"noun","def":"a situation where too little of something is available","cluster":"scarce","same":[313,314,315,316,318,319,320,321,322],"related":[306,307,308,309,310,311,312]},{"id":318,"word":"scant","pos":"adj","def":"only just enough, or not quite enough","cluster":"scarce","same":[313,314,315,316,317,319,320,321,322],"related":[306,307,308,309,310,311,312]},{"id":319,"word":"spartan","pos":"adj","def":"simple and severe, without comfort or luxury","cluster":"scarce","same":[313,314,315,316,317,318,320,321,322],"related":[306,307,308,309,310,311,312]},{"id":320,"word":"shortage","pos":"noun","def":"a state in which something is not available in sufficient amounts","cluster":"scarce","same":[313,314,315,316,317,318,319,321,322],"related":[306,307,308,309,310,311,312]},{"id":321,"word":"insufficiency","pos":"noun","def":"a lack of adequate amount, ability, or quality","cluster":"scarce","same":[313,314,315,316,317,318,319,320,322],"related":[306,307,308,309,310,311,312]},{"id":322,"word":"scarcity","pos":"noun","def":"the condition of not having enough of something to meet demand","cluster":"scarce","same":[313,314,315,316,317,318,319,320,321],"related":[306,307,308,309,310,311,312]},{"id":323,"word":"superfluous","pos":"adj","def":"unnecessary, especially through being more than enough","cluster":"excessive","same":[324,325,326,327,328,329],"related":[330,331,332,333,334,335,336]},{"id":324,"word":"extraneous","pos":"adj","def":"irrelevant or unnecessary","cluster":"excessive","same":[323,325,326,327,328,329],"related":[330,331,332,333,334,335,336]},{"id":325,"word":"gratuitous","pos":"adj","def":"uncalled for; lacking good reason; unnecessary","cluster":"excessive","same":[323,324,326,327,328,329],"related":[330,331,332,333,334,335,336]},{"id":326,"word":"redundant","pos":"adj","def":"no longer needed because it repeats what is already there","cluster":"excessive","same":[323,324,325,327,328,329],"related":[330,331,332,333,334,335,336]},{"id":327,"word":"excessive","pos":"adj","def":"more than is necessary or desirable","cluster":"excessive","same":[323,324,325,326,328,329],"related":[330,331,332,333,334,335,336]},{"id":328,"word":"surplus","pos":"adj","def":"an amount left over when requirements have been met","cluster":"excessive","same":[323,324,325,326,327,329],"related":[330,331,332,333,334,335,336]},{"id":329,"word":"inordinate","pos":"adj","def":"far beyond what is normal, reasonable, or necessary","cluster":"excessive","same":[323,324,325,326,327,328],"related":[330,331,332,333,334,335,336]},{"id":330,"word":"abstemious","pos":"adj","def":"not self-indulgent, especially in eating and drinking","cluster":"moderate","same":[331,332,333,334,335,336],"related":[323,324,325,326,327,328,329]},{"id":331,"word":"temperate","pos":"adj","def":"showing moderation or self-restraint","cluster":"moderate","same":[330,332,333,334,335,336],"related":[323,324,325,326,327,328,329]},{"id":332,"word":"austere","pos":"adj","def":"severe or strict in manner; plain and self-denying","cluster":"moderate","same":[330,331,333,334,335,336],"related":[323,324,325,326,327,328,329]},{"id":333,"word":"ascetic","pos":"adj","def":"characterized by severe self-discipline and avoidance of indulgence","cluster":"moderate","same":[330,331,332,334,335,336],"related":[323,324,325,326,327,328,329]},{"id":334,"word":"restrained","pos":"adj","def":"kept under control; not extreme","cluster":"moderate","same":[330,331,332,333,335,336],"related":[323,324,325,326,327,328,329]},{"id":335,"word":"moderate","pos":"adj","def":"average in amount, intensity, or degree; not extreme","cluster":"moderate","same":[330,331,332,333,334,336],"related":[323,324,325,326,327,328,329]},{"id":336,"word":"sober","pos":"adj","def":"serious and level-headed, without exaggeration or excess","cluster":"moderate","same":[330,331,332,333,334,335],"related":[323,324,325,326,327,328,329]},{"id":337,"word":"docile","pos":"adj","def":"ready to accept control or instruction; submissive","cluster":"submissive","same":[338,339,340,341,342,343],"related":[344,345,346,347,348,349,350]},{"id":338,"word":"compliant","pos":"adj","def":"inclined to agree with others or obey rules","cluster":"submissive","same":[337,339,340,341,342,343],"related":[344,345,346,347,348,349,350]},{"id":339,"word":"acquiescent","pos":"adj","def":"ready to accept something without protest","cluster":"submissive","same":[337,338,340,341,342,343],"related":[344,345,346,347,348,349,350]},{"id":340,"word":"deferential","pos":"adj","def":"showing respect for someone or something","cluster":"submissive","same":[337,338,339,341,342,343],"related":[344,345,346,347,348,349,350]},{"id":341,"word":"pliant","pos":"adj","def":"easily influenced or bent to another's will","cluster":"submissive","same":[337,338,339,340,342,343],"related":[344,345,346,347,348,349,350]},{"id":342,"word":"subservient","pos":"adj","def":"prepared to obey others unquestioningly","cluster":"submissive","same":[337,338,339,340,341,343],"related":[344,345,346,347,348,349,350]},{"id":343,"word":"yielding","pos":"adj","def":"tending to give way under pressure rather than resist","cluster":"submissive","same":[337,338,339,340,341,342],"related":[344,345,346,347,348,349,350]},{"id":344,"word":"defiant","pos":"adj","def":"showing defiance; boldly resistant to authority","cluster":"rebellious","same":[345,346,347,348,349,350],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":345,"word":"insubordinate","pos":"adj","def":"disobedient to authority","cluster":"rebellious","same":[344,346,347,348,349,350],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":346,"word":"refractory","pos":"adj","def":"stubborn or unmanageable; resistant to discipline","cluster":"rebellious","same":[344,345,347,348,349,350],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":347,"word":"mutinous","pos":"adj","def":"refusing to obey orders; rebellious","cluster":"rebellious","same":[344,345,346,348,349,350],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":348,"word":"contumacious","pos":"adj","def":"stubbornly or willfully disobedient to authority","cluster":"rebellious","same":[344,345,346,347,349,350],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":349,"word":"unruly","pos":"adj","def":"disorderly and disruptive; not amenable to discipline","cluster":"rebellious","same":[344,345,346,347,348,350],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":350,"word":"insurgent","pos":"adj","def":"rising in active revolt","cluster":"rebellious","same":[344,345,346,347,348,349],"related":[88,89,90,91,92,93,94,95,337,338,339,340,341,342,343]},{"id":351,"word":"deleterious","pos":"adj","def":"causing harm or damage","cluster":"harmful","same":[352,353,354,355,356,357],"related":[358,359,360,361,362,363,364]},{"id":352,"word":"pernicious","pos":"adj","def":"having a harmful effect, especially in a gradual way","cluster":"harmful","same":[351,353,354,355,356,357],"related":[358,359,360,361,362,363,364]},{"id":353,"word":"noxious","pos":"adj","def":"harmful, poisonous, or very unpleasant","cluster":"harmful","same":[351,352,354,355,356,357],"related":[358,359,360,361,362,363,364]},{"id":354,"word":"detrimental","pos":"adj","def":"tending to cause harm","cluster":"harmful","same":[351,352,353,355,356,357],"related":[358,359,360,361,362,363,364]},{"id":355,"word":"malignant","pos":"adj","def":"harmful in intention or effect; malicious","cluster":"harmful","same":[351,352,353,354,356,357],"related":[358,359,360,361,362,363,364]},{"id":356,"word":"injurious","pos":"adj","def":"causing or likely to cause damage or harm","cluster":"harmful","same":[351,352,353,354,355,357],"related":[358,359,360,361,362,363,364]},{"id":357,"word":"virulent","pos":"adj","def":"bitterly hostile or severe; extremely harmful","cluster":"harmful","same":[351,352,353,354,355,356],"related":[358,359,360,361,362,363,364]},{"id":358,"word":"beneficial","pos":"adj","def":"producing a good or helpful result","cluster":"beneficial","same":[359,360,361,362,363,364],"related":[351,352,353,354,355,356,357]},{"id":359,"word":"salutary","pos":"adj","def":"having a good effect, often despite seeming harsh at first","cluster":"beneficial","same":[358,360,361,362,363,364],"related":[351,352,353,354,355,356,357]},{"id":360,"word":"efficacious","pos":"adj","def":"effective in producing a desired result","cluster":"beneficial","same":[358,359,361,362,363,364],"related":[351,352,353,354,355,356,357]},{"id":361,"word":"propitious","pos":"adj","def":"favorable; giving a good chance of success","cluster":"beneficial","same":[358,359,360,362,363,364],"related":[351,352,353,354,355,356,357]},{"id":362,"word":"auspicious","pos":"adj","def":"conducive to success; favorable","cluster":"beneficial","same":[358,359,360,361,363,364],"related":[351,352,353,354,355,356,357]},{"id":363,"word":"advantageous","pos":"adj","def":"providing a favorable edge or benefit toward a purpose","cluster":"beneficial","same":[358,359,360,361,362,364],"related":[351,352,353,354,355,356,357]},{"id":364,"word":"felicitous","pos":"adj","def":"well-chosen, apt, or fortunate","cluster":"beneficial","same":[358,359,360,361,362,363],"related":[351,352,353,354,355,356,357]},{"id":365,"word":"hyperbole","pos":"noun","def":"exaggerated statements not meant to be taken literally","cluster":"rhetorical_devices","same":[366,367,368,369,370,371,372,373,374],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":366,"word":"euphemism","pos":"noun","def":"a mild or indirect word substituted for a harsh or blunt one","cluster":"rhetorical_devices","same":[365,367,368,369,370,371,372,373,374],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":367,"word":"oxymoron","pos":"noun","def":"a figure of speech combining contradictory terms","cluster":"rhetorical_devices","same":[365,366,368,369,370,371,372,373,374],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":368,"word":"allegory","pos":"noun","def":"a story, poem, or picture with a hidden symbolic meaning","cluster":"rhetorical_devices","same":[365,366,367,369,370,371,372,373,374],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":369,"word":"motif","pos":"noun","def":"a recurring element or theme in a work","cluster":"rhetorical_devices","same":[365,366,367,368,370,371,372,373,374],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":370,"word":"paradox","pos":"noun","def":"a statement that seems contradictory but may be true","cluster":"rhetorical_devices","same":[365,366,367,368,369,371,372,373,374],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":371,"word":"juxtaposition","pos":"noun","def":"the fact of placing two things close together for contrasting effect","cluster":"rhetorical_devices","same":[365,366,367,368,369,370,372,373,374],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":372,"word":"irony","pos":"noun","def":"the expression of meaning using language that signifies the opposite","cluster":"rhetorical_devices","same":[365,366,367,368,369,370,371,373,374],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":373,"word":"understatement","pos":"noun","def":"the presentation of something as smaller or less important than it is","cluster":"rhetorical_devices","same":[365,366,367,368,369,370,371,372,374],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":374,"word":"allusion","pos":"noun","def":"an indirect reference to something","cluster":"rhetorical_devices","same":[365,366,367,368,369,370,371,372,373],"related":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390]},{"id":375,"word":"empirical","pos":"adj","def":"based on observation or experience rather than theory","cluster":"evidence_reasoning","same":[376,377,378,379,380,381,382,383,384,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":376,"word":"hypothesis","pos":"noun","def":"a proposed explanation made on limited evidence, as a starting point","cluster":"evidence_reasoning","same":[375,377,378,379,380,381,382,383,384,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":377,"word":"corroborate","pos":"verb","def":"confirm or give support to a statement or finding","cluster":"evidence_reasoning","same":[375,376,378,379,380,381,382,383,384,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":378,"word":"refute","pos":"verb","def":"prove a statement or theory to be wrong","cluster":"evidence_reasoning","same":[375,376,377,379,380,381,382,383,384,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":379,"word":"substantiate","pos":"verb","def":"provide evidence to support or prove the truth of","cluster":"evidence_reasoning","same":[375,376,377,378,380,381,382,383,384,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":380,"word":"conjecture","pos":"noun","def":"an opinion or conclusion formed on the basis of incomplete information","cluster":"evidence_reasoning","same":[375,376,377,378,379,381,382,383,384,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":381,"word":"extrapolate","pos":"verb","def":"extend a conclusion to an assumed, similar situation","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,382,383,384,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":382,"word":"anecdotal","pos":"adj","def":"based on personal accounts rather than facts or research","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,381,383,384,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":383,"word":"fallacious","pos":"adj","def":"based on a mistaken belief; containing a flaw in reasoning","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,381,382,384,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":384,"word":"specious","pos":"adj","def":"seeming reasonable or true, but actually false or misleading","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,381,382,383,385,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":385,"word":"dichotomy","pos":"noun","def":"a division or contrast between two things that are opposed","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,381,382,383,384,386,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":386,"word":"plausible","pos":"adj","def":"seeming reasonable or probable","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,381,382,383,384,385,387,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":387,"word":"postulate","pos":"noun","def":"a thing suggested or assumed as true as the basis for reasoning","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,381,382,383,384,385,386,388,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":388,"word":"premise","pos":"noun","def":"a previous statement from which another is inferred or follows logically","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,381,382,383,384,385,386,387,389,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":389,"word":"validate","pos":"verb","def":"check or prove that something is accurate or justified","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,390],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":390,"word":"verify","pos":"verb","def":"make sure or demonstrate that something is true or accurate","cluster":"evidence_reasoning","same":[375,376,377,378,379,380,381,382,383,384,385,386,387,388,389],"related":[365,366,367,368,369,370,371,372,373,374]},{"id":391,"word":"ephemeral","pos":"adj","def":"lasting for only a brief time before disappearing","cluster":"temporary","same":[392,393,394,395,396,397],"related":[398,399,400,401,402,403,404]},{"id":392,"word":"transient","pos":"adj","def":"staying or lasting only a short time before moving on or changing","cluster":"temporary","same":[391,393,394,395,396,397],"related":[398,399,400,401,402,403,404]},{"id":393,"word":"fleeting","pos":"adj","def":"lasting for just a moment; gone almost as soon as it appears","cluster":"temporary","same":[391,392,394,395,396,397],"related":[398,399,400,401,402,403,404]},{"id":394,"word":"evanescent","pos":"adj","def":"soon passing out of sight; quickly fading","cluster":"temporary","same":[391,392,393,395,396,397],"related":[398,399,400,401,402,403,404]},{"id":395,"word":"transitory","pos":"adj","def":"existing or valid for only a limited time before ending","cluster":"temporary","same":[391,392,393,394,396,397],"related":[398,399,400,401,402,403,404]},{"id":396,"word":"momentary","pos":"adj","def":"lasting for only a single moment; very brief","cluster":"temporary","same":[391,392,393,394,395,397],"related":[398,399,400,401,402,403,404]},{"id":397,"word":"impermanent","pos":"adj","def":"not lasting forever; bound to end or change eventually","cluster":"temporary","same":[391,392,393,394,395,396],"related":[398,399,400,401,402,403,404]},{"id":398,"word":"perpetual","pos":"adj","def":"never ending or changing","cluster":"permanent","same":[399,400,401,402,403,404],"related":[391,392,393,394,395,396,397]},{"id":399,"word":"enduring","pos":"adj","def":"lasting over a long period of time","cluster":"permanent","same":[398,400,401,402,403,404],"related":[391,392,393,394,395,396,397]},{"id":400,"word":"indelible","pos":"adj","def":"unable to be forgotten or removed; permanent","cluster":"permanent","same":[398,399,401,402,403,404],"related":[391,392,393,394,395,396,397]},{"id":401,"word":"immutable","pos":"adj","def":"unchanging over time; unable to be changed","cluster":"permanent","same":[398,399,400,402,403,404],"related":[391,392,393,394,395,396,397]},{"id":402,"word":"perennial","pos":"adj","def":"lasting or existing for a long time; recurring","cluster":"permanent","same":[398,399,400,401,403,404],"related":[391,392,393,394,395,396,397]},{"id":403,"word":"everlasting","pos":"adj","def":"lasting forever, or for a very long time","cluster":"permanent","same":[398,399,400,401,402,404],"related":[391,392,393,394,395,396,397]},{"id":404,"word":"abiding","pos":"adj","def":"continuing steadily without fading over time","cluster":"permanent","same":[398,399,400,401,402,403],"related":[391,392,393,394,395,396,397]},{"id":405,"word":"hackneyed","pos":"adj","def":"overused and no longer having force or novelty; clich\u00e9d","cluster":"old_fashioned","same":[406,407,408,409,410,411,412],"related":[413,414,415,416,417,418]},{"id":406,"word":"trite","pos":"adj","def":"overused and of little interest; unoriginal","cluster":"old_fashioned","same":[405,407,408,409,410,411,412],"related":[413,414,415,416,417,418]},{"id":407,"word":"banal","pos":"adj","def":"so lacking in originality as to be obvious and boring","cluster":"old_fashioned","same":[405,406,408,409,410,411,412],"related":[413,414,415,416,417,418]},{"id":408,"word":"cliched","pos":"adj","def":"overused and stereotyped; lacking originality","cluster":"old_fashioned","same":[405,406,407,409,410,411,412],"related":[413,414,415,416,417,418]},{"id":409,"word":"archaic","pos":"adj","def":"old-fashioned or no longer in ordinary use","cluster":"old_fashioned","same":[405,406,407,408,410,411,412],"related":[413,414,415,416,417,418]},{"id":410,"word":"antiquated","pos":"adj","def":"old-fashioned or outdated","cluster":"old_fashioned","same":[405,406,407,408,409,411,412],"related":[413,414,415,416,417,418]},{"id":411,"word":"obsolete","pos":"adj","def":"no longer produced or used; out of date","cluster":"old_fashioned","same":[405,406,407,408,409,410,412],"related":[413,414,415,416,417,418]},{"id":412,"word":"anachronistic","pos":"adj","def":"belonging to a period other than the one portrayed; out of place in time","cluster":"old_fashioned","same":[405,406,407,408,409,410,411],"related":[413,414,415,416,417,418]},{"id":413,"word":"novel","pos":"adj","def":"new or unusual in an interesting way","cluster":"original","same":[414,415,416,417,418],"related":[405,406,407,408,409,410,411,412]},{"id":414,"word":"innovative","pos":"adj","def":"introducing new ideas; original and creative","cluster":"original","same":[413,415,416,417,418],"related":[405,406,407,408,409,410,411,412]},{"id":415,"word":"unprecedented","pos":"adj","def":"never done or known before","cluster":"original","same":[413,414,416,417,418],"related":[405,406,407,408,409,410,411,412]},{"id":416,"word":"groundbreaking","pos":"adj","def":"introducing an entirely new approach that others will follow","cluster":"original","same":[413,414,415,417,418],"related":[405,406,407,408,409,410,411,412]},{"id":417,"word":"avant-garde","pos":"adj","def":"new and experimental, especially in art or ideas","cluster":"original","same":[413,414,415,416,418],"related":[405,406,407,408,409,410,411,412]},{"id":418,"word":"unorthodox","pos":"adj","def":"contrary to what is usual or traditional","cluster":"original","same":[413,414,415,416,417],"related":[405,406,407,408,409,410,411,412]},{"id":419,"word":"pragmatic","pos":"adj","def":"dealing with things sensibly and realistically","cluster":"practical","same":[420,421,422,423],"related":[424,425,426,427,428]},{"id":420,"word":"utilitarian","pos":"adj","def":"designed to be useful rather than attractive; practical","cluster":"practical","same":[419,421,422,423],"related":[424,425,426,427,428]},{"id":421,"word":"expedient","pos":"adj","def":"convenient and practical, although possibly improper","cluster":"practical","same":[419,420,422,423],"related":[424,425,426,427,428]},{"id":422,"word":"practicable","pos":"adj","def":"able to be done or put into practice successfully","cluster":"practical","same":[419,420,421,423],"related":[424,425,426,427,428]},{"id":423,"word":"hardheaded","pos":"adj","def":"practical and realistic; not sentimental","cluster":"practical","same":[419,420,421,422],"related":[424,425,426,427,428]},{"id":424,"word":"idealistic","pos":"adj","def":"believing that a perfect situation can be achieved; unrealistic","cluster":"idealistic","same":[425,426,427,428],"related":[419,420,421,422,423]},{"id":425,"word":"quixotic","pos":"adj","def":"pursuing lofty, impossible goals with naive enthusiasm","cluster":"idealistic","same":[424,426,427,428],"related":[419,420,421,422,423]},{"id":426,"word":"utopian","pos":"adj","def":"envisioning a perfect society that could never really exist","cluster":"idealistic","same":[424,425,427,428],"related":[419,420,421,422,423]},{"id":427,"word":"starry-eyed","pos":"adj","def":"filled with naive hope and optimism about how things will turn out","cluster":"idealistic","same":[424,425,426,428],"related":[419,420,421,422,423]},{"id":428,"word":"impractical","pos":"adj","def":"not adapted for actual use; unrealistic","cluster":"idealistic","same":[424,425,426,427],"related":[419,420,421,422,423]},{"id":429,"word":"mundane","pos":"adj","def":"lacking interest or excitement; dull","cluster":"dull","same":[430,431,432,433,434,435],"related":[258,259,260,261,262,263,264,442,443,444,445,446,447]},{"id":430,"word":"monotonous","pos":"adj","def":"repeating in a flat, unvarying pattern until it becomes wearisome","cluster":"dull","same":[429,431,432,433,434,435],"related":[258,259,260,261,262,263,264,442,443,444,445,446,447]},{"id":431,"word":"tedious","pos":"adj","def":"too long, slow, or dull; tiresome","cluster":"dull","same":[429,430,432,433,434,435],"related":[258,259,260,261,262,263,264,442,443,444,445,446,447]},{"id":432,"word":"insipid","pos":"adj","def":"lacking vigor, flavor, or interest; bland","cluster":"dull","same":[429,430,431,433,434,435],"related":[258,259,260,261,262,263,264,442,443,444,445,446,447]},{"id":433,"word":"humdrum","pos":"adj","def":"lacking excitement or variety; dull","cluster":"dull","same":[429,430,431,432,434,435],"related":[258,259,260,261,262,263,264,442,443,444,445,446,447]},{"id":434,"word":"prosaic","pos":"adj","def":"lacking imagination; dull and ordinary","cluster":"dull","same":[429,430,431,432,433,435],"related":[258,259,260,261,262,263,264,442,443,444,445,446,447]},{"id":435,"word":"vapid","pos":"adj","def":"offering nothing that is stimulating or challenging; dull","cluster":"dull","same":[429,430,431,432,433,434],"related":[258,259,260,261,262,263,264,442,443,444,445,446,447]},{"id":436,"word":"inquisitive","pos":"adj","def":"curious or given to inquiry; eager for knowledge","cluster":"curious","same":[437,438,439,440,441],"related":[442,443,444,445,446,447]},{"id":437,"word":"inquiring","pos":"adj","def":"interested in learning about many different things","cluster":"curious","same":[436,438,439,440,441],"related":[442,443,444,445,446,447]},{"id":438,"word":"probing","pos":"adj","def":"searching or exploring thoroughly","cluster":"curious","same":[436,437,439,440,441],"related":[442,443,444,445,446,447]},{"id":439,"word":"avid","pos":"adj","def":"having or showing a keen interest in or enthusiasm for something","cluster":"curious","same":[436,437,438,440,441],"related":[442,443,444,445,446,447]},{"id":440,"word":"nosy","pos":"adj","def":"overly curious about other people's affairs","cluster":"curious","same":[436,437,438,439,441],"related":[442,443,444,445,446,447]},{"id":441,"word":"prying","pos":"adj","def":"actively digging into others' private business in an unwelcome way","cluster":"curious","same":[436,437,438,439,440],"related":[442,443,444,445,446,447]},{"id":442,"word":"apathetic","pos":"adj","def":"showing or feeling no interest, enthusiasm, or concern","cluster":"indifferent","same":[443,444,445,446,447],"related":[429,430,431,432,433,434,435,436,437,438,439,440,441]},{"id":443,"word":"indifferent","pos":"adj","def":"having no particular interest or sympathy; unconcerned","cluster":"indifferent","same":[442,444,445,446,447],"related":[429,430,431,432,433,434,435,436,437,438,439,440,441]},{"id":444,"word":"impassive","pos":"adj","def":"not feeling or showing emotion","cluster":"indifferent","same":[442,443,445,446,447],"related":[429,430,431,432,433,434,435,436,437,438,439,440,441]},{"id":445,"word":"detached","pos":"adj","def":"not influenced by or involved with something; aloof","cluster":"indifferent","same":[442,443,444,446,447],"related":[429,430,431,432,433,434,435,436,437,438,439,440,441]},{"id":446,"word":"blase","pos":"adj","def":"unimpressed by something because of over-exposure to it","cluster":"indifferent","same":[442,443,444,445,447],"related":[429,430,431,432,433,434,435,436,437,438,439,440,441]},{"id":447,"word":"unmoved","pos":"adj","def":"not affected emotionally","cluster":"indifferent","same":[442,443,444,445,446],"related":[429,430,431,432,433,434,435,436,437,438,439,440,441]},{"id":448,"word":"zenith","pos":"noun","def":"the highest point reached; the peak","cluster":"peak_trough","same":[449,450,451,452,453],"related":[454,455,456,457,458,459,486,487,488,489,490]},{"id":449,"word":"nadir","pos":"noun","def":"the lowest point","cluster":"peak_trough","same":[448,450,451,452,453],"related":[454,455,456,457,458,459,486,487,488,489,490]},{"id":450,"word":"apex","pos":"noun","def":"the top or highest point of something","cluster":"peak_trough","same":[448,449,451,452,453],"related":[454,455,456,457,458,459,486,487,488,489,490]},{"id":451,"word":"pinnacle","pos":"noun","def":"the most successful point; the peak","cluster":"peak_trough","same":[448,449,450,452,453],"related":[454,455,456,457,458,459,486,487,488,489,490]},{"id":452,"word":"culmination","pos":"noun","def":"the highest or climactic point of something, especially as attained after a long time","cluster":"peak_trough","same":[448,449,450,451,453],"related":[454,455,456,457,458,459,486,487,488,489,490]},{"id":453,"word":"acme","pos":"noun","def":"the point at which someone or something is best, most successful, or most skilled","cluster":"peak_trough","same":[448,449,450,451,452],"related":[454,455,456,457,458,459,486,487,488,489,490]},{"id":454,"word":"quandary","pos":"noun","def":"a state of confusion over which of several options to choose","cluster":"puzzle_dilemma","same":[455,456,457,458,459],"related":[448,449,450,451,452,453,486,487,488,489,490]},{"id":455,"word":"conundrum","pos":"noun","def":"a confusing and difficult problem or question","cluster":"puzzle_dilemma","same":[454,456,457,458,459],"related":[448,449,450,451,452,453,486,487,488,489,490]},{"id":456,"word":"predicament","pos":"noun","def":"a difficult, unpleasant, or embarrassing situation","cluster":"puzzle_dilemma","same":[454,455,457,458,459],"related":[448,449,450,451,452,453,486,487,488,489,490]},{"id":457,"word":"dilemma","pos":"noun","def":"a situation requiring a choice between equally undesirable options","cluster":"puzzle_dilemma","same":[454,455,456,458,459],"related":[448,449,450,451,452,453,486,487,488,489,490]},{"id":458,"word":"impasse","pos":"noun","def":"a situation with no way out; a deadlock","cluster":"puzzle_dilemma","same":[454,455,456,457,459],"related":[448,449,450,451,452,453,486,487,488,489,490]},{"id":459,"word":"quagmire","pos":"noun","def":"a difficult, precarious, or entrapping situation","cluster":"puzzle_dilemma","same":[454,455,456,457,458],"related":[448,449,450,451,452,453,486,487,488,489,490]},{"id":460,"word":"harbinger","pos":"noun","def":"a person or thing that announces or signals the approach of something","cluster":"sign_omen","same":[461,462,463,464,465],"related":[471,472,473,474,475,486,487,488,489,490]},{"id":461,"word":"precursor","pos":"noun","def":"a person or thing that comes before another of the same kind; a forerunner","cluster":"sign_omen","same":[460,462,463,464,465],"related":[471,472,473,474,475,486,487,488,489,490]},{"id":462,"word":"omen","pos":"noun","def":"an event thought to foretell whether something good or bad will happen","cluster":"sign_omen","same":[460,461,463,464,465],"related":[471,472,473,474,475,486,487,488,489,490]},{"id":463,"word":"portent","pos":"noun","def":"a sign or warning that something momentous is about to happen","cluster":"sign_omen","same":[460,461,462,464,465],"related":[471,472,473,474,475,486,487,488,489,490]},{"id":464,"word":"foreshadowing","pos":"noun","def":"a warning or indication of a future event","cluster":"sign_omen","same":[460,461,462,463,465],"related":[471,472,473,474,475,486,487,488,489,490]},{"id":465,"word":"augury","pos":"noun","def":"a sign believed to predict how a future event will turn out","cluster":"sign_omen","same":[460,461,462,463,464],"related":[471,472,473,474,475,486,487,488,489,490]},{"id":466,"word":"vestige","pos":"noun","def":"a small trace left behind of something that has otherwise vanished","cluster":"remnant_trace","same":[467,468,469,470],"related":[481,482,483,484,485,486,487,488,489,490]},{"id":467,"word":"remnant","pos":"noun","def":"a small remaining quantity of something","cluster":"remnant_trace","same":[466,468,469,470],"related":[481,482,483,484,485,486,487,488,489,490]},{"id":468,"word":"relic","pos":"noun","def":"an object or custom that has survived from an earlier period","cluster":"remnant_trace","same":[466,467,469,470],"related":[481,482,483,484,485,486,487,488,489,490]},{"id":469,"word":"residue","pos":"noun","def":"a small amount of something that remains after the main part has gone","cluster":"remnant_trace","same":[466,467,468,470],"related":[481,482,483,484,485,486,487,488,489,490]},{"id":470,"word":"holdover","pos":"noun","def":"a person or thing that remains from an earlier time","cluster":"remnant_trace","same":[466,467,468,469],"related":[481,482,483,484,485,486,487,488,489,490]},{"id":471,"word":"catalyst","pos":"noun","def":"a person or thing that precipitates an event or change","cluster":"catalyst","same":[472,473,474,475],"related":[460,461,462,463,464,465,476,477,478,479,480]},{"id":472,"word":"impetus","pos":"noun","def":"the force or energy that makes something happen or happen faster","cluster":"catalyst","same":[471,473,474,475],"related":[460,461,462,463,464,465,476,477,478,479,480]},{"id":473,"word":"stimulus","pos":"noun","def":"something that rouses activity or energy; an incentive","cluster":"catalyst","same":[471,472,474,475],"related":[460,461,462,463,464,465,476,477,478,479,480]},{"id":474,"word":"instigator","pos":"noun","def":"a person who initiates an action or event","cluster":"catalyst","same":[471,472,473,475],"related":[460,461,462,463,464,465,476,477,478,479,480]},{"id":475,"word":"linchpin","pos":"noun","def":"a person or thing vital to an enterprise or organization","cluster":"catalyst","same":[471,472,473,474],"related":[460,461,462,463,464,465,476,477,478,479,480]},{"id":476,"word":"paragon","pos":"noun","def":"a person or thing regarded as a perfect example of a particular quality","cluster":"paragon","same":[477,478,479,480],"related":[471,472,473,474,475,481,482,483,484,485]},{"id":477,"word":"epitome","pos":"noun","def":"a perfect example of a particular quality or type","cluster":"paragon","same":[476,478,479,480],"related":[471,472,473,474,475,481,482,483,484,485]},{"id":478,"word":"quintessence","pos":"noun","def":"the most perfect or typical embodiment of a quality or class","cluster":"paragon","same":[476,477,479,480],"related":[471,472,473,474,475,481,482,483,484,485]},{"id":479,"word":"exemplar","pos":"noun","def":"a person or thing serving as a typical example or model","cluster":"paragon","same":[476,477,478,480],"related":[471,472,473,474,475,481,482,483,484,485]},{"id":480,"word":"archetype","pos":"noun","def":"a typical example of a person or thing; the original model","cluster":"paragon","same":[476,477,478,479],"related":[471,472,473,474,475,481,482,483,484,485]},{"id":481,"word":"boon","pos":"noun","def":"a thing that is helpful or beneficial","cluster":"boon_bane","same":[482,483,484,485],"related":[466,467,468,469,470,476,477,478,479,480]},{"id":482,"word":"bane","pos":"noun","def":"a cause of great distress or annoyance","cluster":"boon_bane","same":[481,483,484,485],"related":[466,467,468,469,470,476,477,478,479,480]},{"id":483,"word":"scourge","pos":"noun","def":"a person or thing that causes great trouble or suffering","cluster":"boon_bane","same":[481,482,484,485],"related":[466,467,468,469,470,476,477,478,479,480]},{"id":484,"word":"affliction","pos":"noun","def":"something that causes pain or suffering","cluster":"boon_bane","same":[481,482,483,485],"related":[466,467,468,469,470,476,477,478,479,480]},{"id":485,"word":"windfall","pos":"noun","def":"an unexpected, unearned stroke of good fortune","cluster":"boon_bane","same":[481,482,483,484],"related":[466,467,468,469,470,476,477,478,479,480]},{"id":486,"word":"anomaly","pos":"noun","def":"something that deviates from what is standard or expected","cluster":"anomaly","same":[487,488,489,490],"related":[448,449,450,451,452,453,454,455,456,457,458,459]},{"id":487,"word":"aberration","pos":"noun","def":"a departure from what is normal, usual, or expected","cluster":"anomaly","same":[486,488,489,490],"related":[448,449,450,451,452,453,454,455,456,457,458,459]},{"id":488,"word":"deviation","pos":"noun","def":"an act of departing from an established course or norm","cluster":"anomaly","same":[486,487,489,490],"related":[448,449,450,451,452,453,454,455,456,457,458,459]},{"id":489,"word":"irregularity","pos":"noun","def":"a state, event, or practice not in accordance with rules or convention","cluster":"anomaly","same":[486,487,488,490],"related":[448,449,450,451,452,453,454,455,456,457,458,459]},{"id":490,"word":"outlier","pos":"noun","def":"a thing situated away from the main body; something atypical","cluster":"anomaly","same":[486,487,488,489],"related":[448,449,450,451,452,453,454,455,456,457,458,459]},{"id":491,"word":"capitulate","pos":"verb","def":"surrender or give in to a demand","cluster":"surrender","same":[492,493,494,495],"related":[337,338,339,340,341,342,343,344,345,346,347,348,349,350]},{"id":492,"word":"succumb","pos":"verb","def":"fail to resist pressure, temptation, or other negative force; give way","cluster":"surrender","same":[491,493,494,495],"related":[337,338,339,340,341,342,343,344,345,346,347,348,349,350]},{"id":493,"word":"relinquish","pos":"verb","def":"voluntarily cease to keep or claim; give up","cluster":"surrender","same":[491,492,494,495],"related":[337,338,339,340,341,342,343,344,345,346,347,348,349,350]},{"id":494,"word":"concede","pos":"verb","def":"admit that something is true after first denying it; give up a point","cluster":"surrender","same":[491,492,493,495],"related":[337,338,339,340,341,342,343,344,345,346,347,348,349,350]},{"id":495,"word":"abdicate","pos":"verb","def":"fail to fulfil a duty or responsibility; formally give up power","cluster":"surrender","same":[491,492,493,494],"related":[337,338,339,340,341,342,343,344,345,346,347,348,349,350]}];
+</script>
+<script>
+(function(){
+  "use strict";
+
+  // A pristine snapshot of this exact page, captured before anything below has
+  // touched the DOM. When a save file is connected, this — with just the state
+  // marker swapped out — is what gets written back: a complete, still-working
+  // copy of the app with your progress baked in. No separate data file, ever.
+  var PRISTINE_HTML = "<!doctype html>\n" + document.documentElement.outerHTML;
+
+  // This literal is the marker `queueWriteToFile` looks for and replaces.
+  // Keep it a no-op (null) here — it's read out of PRISTINE_HTML, never off
+  // the live value below, so editing this line doesn't change boot behavior.
+  var BOOT_STATE = /*@S@*/null/*@/S@*/;
+
+  var STORE_KEY = "lexicon-drill-progress-v1";
+  var FS_SUPPORTED = typeof window.showSaveFilePicker === "function";
+  var SHOW_BACKUP_BAR = true;
+
+  function defaultState(){
+    return { totalAnswered:0, totalCorrect:0, streak:0, bestStreak:0,
+             review:{}, seen:{}, totalMs:0 };
+  }
+  function isValidState(s){
+    return !!s && typeof s === "object" && typeof s.totalAnswered === "number";
+  }
+  function loadState(){
+    // A connected save file (this same file, reopened) is the source of truth.
+    if(isValidState(BOOT_STATE)) return BOOT_STATE;
+    try{
+      var raw = localStorage.getItem(STORE_KEY);
+      if(raw) return JSON.parse(raw);
+    }catch(e){}
+    return defaultState();
+  }
+  function saveLocal(){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+  function saveState(){
+    saveLocal();
+    if(SHOW_BACKUP_BAR) queueWriteToFile();
+  }
+
+  // Pull a saved state object out of either this app's own save-file format
+  // (a full HTML page with the state marker below) or an old plain-JSON
+  // backup from an earlier version, so Import still opens both.
+  function extractState(text){
+    var m = text.match(/\/\*@S@\*\/([\s\S]*?)\/\*@\/S@\*\//);
+    if(m){
+      try{ var s = JSON.parse(m[1]); if(isValidState(s)) return s; }catch(e){}
+    }
+    try{ var s2 = JSON.parse(text); if(isValidState(s2)) return s2; }catch(e){}
+    return null;
+  }
+
+  // ---- optional on-disk save file: a living copy of this whole app, kept in
+  // sync after every answer (Chromium browsers only — see FS_SUPPORTED) ----
+  var fileHandle = null;
+  var fileStatus = "none"; // none | connected | needs-permission | error
+  var writeChain = Promise.resolve();
+
+  function buildSelfContainedHtml(){
+    var json = JSON.stringify(state);
+    return PRISTINE_HTML.replace(/\/\*@S@\*\/[\s\S]*?\/\*@\/S@\*\//, "/*@S@*/" + json + "/*@/S@*/");
+  }
+
+  function idbOpen(){
+    return new Promise(function(resolve, reject){
+      var req = indexedDB.open("lexicon-drill-db", 1);
+      req.onupgradeneeded = function(){ req.result.createObjectStore("handles"); };
+      req.onsuccess = function(){ resolve(req.result); };
+      req.onerror = function(){ reject(req.error); };
+    });
+  }
+  function idbGet(key){
+    return idbOpen().then(function(db){
+      return new Promise(function(resolve, reject){
+        var tx = db.transaction("handles", "readonly");
+        var req = tx.objectStore("handles").get(key);
+        req.onsuccess = function(){ resolve(req.result); };
+        req.onerror = function(){ reject(req.error); };
+      });
+    });
+  }
+  function idbSet(key, val){
+    return idbOpen().then(function(db){
+      return new Promise(function(resolve, reject){
+        var tx = db.transaction("handles", "readwrite");
+        tx.objectStore("handles").put(val, key);
+        tx.oncomplete = function(){ resolve(); };
+        tx.onerror = function(){ reject(tx.error); };
+      });
+    });
+  }
+
+  function queueWriteToFile(){
+    if(!fileHandle) return;
+    writeChain = writeChain.then(function(){
+      return fileHandle.createWritable().then(function(writable){
+        return writable.write(buildSelfContainedHtml()).then(function(){ return writable.close(); });
+      });
+    }).then(function(){
+      state.lastSavedAt = Date.now();
+      fileStatus = "connected";
+      refreshFileUi();
+    }).catch(function(e){
+      console.warn("lexicon-drill: file save failed", e);
+      fileStatus = "error";
+      refreshFileUi();
+    });
+  }
+
+  function timeAgo(ts){
+    if(!ts) return "never";
+    var s = Math.max(1, Math.round((Date.now() - ts) / 1000));
+    if(s < 60) return "just now";
+    var m = Math.round(s/60); if(m < 60) return m + (m===1?" minute ago":" minutes ago");
+    var h = Math.round(m/60); if(h < 24) return h + (h===1?" hour ago":" hours ago");
+    var d = Math.round(h/24); return d + (d===1?" day ago":" days ago");
+  }
+
+  function refreshFileUi(){
+    var bar = document.getElementById("fileBar");
+    var text = document.getElementById("fileStatusText");
+    var connectBtn = document.getElementById("connectFileBtn");
+    if(!bar || !SHOW_BACKUP_BAR) return;
+    bar.hidden = false;
+    if(!FS_SUPPORTED){
+      text.textContent = "Progress saves automatically in this browser — nothing to manage. Switching phones or browsers? Use Import with a save file from another device.";
+      connectBtn.hidden = true;
+      return;
+    }
+    connectBtn.hidden = false;
+    if(fileStatus === "connected"){
+      text.textContent = (fileHandle && fileHandle.name ? fileHandle.name : "Your save file") + " stays in sync automatically (last written " + timeAgo(state.lastSavedAt) + ") — reopen that file anytime to pick up where you left off.";
+      connectBtn.textContent = "Change file";
+    } else if(fileStatus === "needs-permission"){
+      text.textContent = "Found a connected save file, but this browser needs permission again after restarting.";
+      connectBtn.textContent = "Reconnect save file";
+    } else if(fileStatus === "error"){
+      text.textContent = "Couldn't write to your save file just now. Progress is still safe in this browser.";
+      connectBtn.textContent = "Reconnect save file";
+    } else {
+      text.textContent = "Not connected yet — progress only lives in this browser. Connect a file and this app keeps a self-updating copy of itself there, no separate data file.";
+      connectBtn.textContent = "Connect a save file";
+    }
+  }
+
+  function connectNewFile(){
+    window.showSaveFilePicker({
+      suggestedName: "lexicon-drill.html",
+      types: [{ description:"Lexicon Drill save file", accept:{ "text/html":[".html"] } }]
+    }).then(function(handle){
+      fileHandle = handle;
+      return idbSet("progressFile", handle);
+    }).then(function(){
+      fileStatus = "connected";
+      refreshFileUi();
+      queueWriteToFile();
+    }).catch(function(e){
+      if(e && e.name === "AbortError") return;
+      console.warn("lexicon-drill: connect failed", e);
+    });
+  }
+
+  function tryReconnectStoredFile(){
+    if(!FS_SUPPORTED){ refreshFileUi(); return; }
+    idbGet("progressFile").then(function(handle){
+      if(!handle) return;
+      return handle.queryPermission({ mode:"readwrite" }).then(function(p){
+        fileHandle = handle;
+        if(p === "granted"){
+          fileStatus = "connected";
+          return handle.getFile().then(function(f){ return f.text(); }).then(function(text){
+            var loaded = extractState(text);
+            if(loaded){
+              state = Object.assign(defaultState(), loaded);
+              saveLocal();
+              refreshStats();
+            }
+          });
+        } else {
+          fileStatus = "needs-permission";
+        }
+      });
+    }).catch(function(){}).then(refreshFileUi);
+  }
+
+  function importBackup(file){
+    var reader = new FileReader();
+    reader.onload = function(){
+      var loaded = extractState(String(reader.result));
+      if(!loaded){
+        window.alert("That doesn't look like a Lexicon Drill save file.");
+        return;
+      }
+      if(state.totalAnswered > 0 && !window.confirm(
+        "Replace this browser's current progress (" + state.totalAnswered + " answered) with the imported one (" + loaded.totalAnswered + " answered)?"
+      )) return;
+      state = Object.assign(defaultState(), loaded);
+      saveState();
+      refreshStats();
+      render();
+    };
+    reader.readAsText(file);
+  }
+
+  var state = loadState();
+  var byId = {};
+  WORD_DATA.forEach(function(w){ byId[w.id] = w; });
+  var allIds = WORD_DATA.map(function(w){ return w.id; });
+
+  var mode = "rapid"; // or "review"
+  var current = null;  // {wordId, direction, options:[ids], correctIdx, answered}
+  var qStartTs = 0;
+  var lastWordId = null;
+  var nextTimer = null;
+
+  function clearNextTimer(){
+    if(nextTimer){ clearTimeout(nextTimer); nextTimer = null; }
+  }
+  function goNext(){
+    clearNextTimer();
+    render();
+  }
+
+  var ticketEl = document.getElementById("ticket");
+  var hintbar = document.getElementById("hintbar");
+
+  function reviewIds(){
+    return Object.keys(state.review).map(Number).filter(function(id){ return byId[id]; });
+  }
+
+  function refreshStats(){
+    document.getElementById("statStreak").textContent = state.streak;
+    document.getElementById("statAnswered").textContent = state.totalAnswered;
+    document.getElementById("statAcc").textContent = state.totalAnswered
+      ? Math.round(100*state.totalCorrect/state.totalAnswered) + "%" : "—";
+    document.getElementById("statPace").textContent = state.totalAnswered
+      ? (state.totalMs/state.totalAnswered/1000).toFixed(1) : "—";
+    document.getElementById("reviewCount").textContent = reviewIds().length;
+  }
+
+  function shuffleArr(arr){
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; }
+    return a;
+  }
+
+  // Distractors must (a) share the word's part of speech, so answer choices
+  // can't be eliminated on grammar alone, and (b) mix a couple of genuine
+  // near-synonyms in with a broader, still-plausible set — pulling all 4
+  // from one tight synonym cluster makes every choice read as basically the
+  // same definition (unanswerable, and a giveaway of the word's meaning in
+  // its own right). MAX_SAME_CLUSTER caps how many of the 4 come from the
+  // word's own cluster; the rest come from the wider same-part-of-speech
+  // word list. Linked "related" clusters are often near-*antonyms* (lazy <->
+  // energetic), so they stay a last resort — otherwise one antonym mixed
+  // into four synonyms makes the odd one out obvious instead of testing
+  // precise meaning.
+  var MAX_SAME_CLUSTER = 2;
+  function pickDistractors(word, n){
+    var wantPos = word.pos;
+    function samePos(id){ return byId[id].pos === wantPos; }
+    var picked = [];
+    var used = {}; used[word.id] = true;
+    var sameIds = {}; word.same.forEach(function(id){ sameIds[id] = true; });
+    var relatedIds = {}; word.related.forEach(function(id){ relatedIds[id] = true; });
+
+    function addFrom(ids, cap){
+      var room = (cap == null) ? (n - picked.length) : Math.min(cap, n - picked.length);
+      if(room <= 0) return;
+      var candidates = shuffleArr(ids.filter(function(id){ return !used[id] && samePos(id); }));
+      candidates.slice(0, room).forEach(function(id){ picked.push(id); used[id] = true; });
+    }
+
+    addFrom(word.same, MAX_SAME_CLUSTER);           // tier 1: a couple of true near-synonyms
+    addFrom(allIds.filter(function(id){ return !sameIds[id] && !relatedIds[id]; })); // tier 2: broad same-POS pool
+    if(picked.length < n) addFrom(word.same);       // tier 3: exhaust same-cluster if the broad pool ran short
+    if(picked.length < n) addFrom(word.related);    // tier 4: linked cluster, last resort (often antonyms)
+    if(picked.length < n) addFrom(allIds);          // tier 5: absolute fallback, same part of speech
+    if(picked.length < n){                          // tier 6: should not normally trigger
+      var rest = shuffleArr(allIds.filter(function(id){ return !used[id]; }));
+      rest.forEach(function(id){ if(picked.length < n){ picked.push(id); used[id]=true; } });
+    }
+    return picked;
+  }
+
+  function nextWordId(pool){
+    var candidates = pool.filter(function(id){ return id !== lastWordId; });
+    if(candidates.length === 0) candidates = pool;
+    return candidates[Math.floor(Math.random()*candidates.length)];
+  }
+
+  function buildQuestion(){
+    var pool = mode === "review" ? reviewIds() : allIds;
+    if(pool.length === 0) return null;
+    var wordId = nextWordId(pool);
+    lastWordId = wordId;
+    var word = byId[wordId];
+    var direction = Math.random() < 0.5 ? "w2d" : "d2w"; // evenly weighted
+    var distractorIds = pickDistractors(word, 4);
+    var optionIds = distractorIds.concat([wordId]);
+    for(var i=optionIds.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=optionIds[i];optionIds[i]=optionIds[j];optionIds[j]=t; }
+    var correctIdx = optionIds.indexOf(wordId);
+    return { wordId: wordId, direction: direction, optionIds: optionIds, correctIdx: correctIdx, answered:false };
+  }
+
+  function letters(){ return ["A","B","C","D","E"]; }
+
+  function render(){
+    clearNextTimer();
+    if(mode === "review" && reviewIds().length === 0){
+      ticketEl.innerHTML =
+        '<div class="empty">' +
+          '<div class="glyph">🗂️</div>' +
+          '<h2>Nothing to review yet</h2>' +
+          '<p>Words you miss in Rapid Fire land here automatically. Drill Rapid Fire for a while, then come back before test day to clean up your weak spots.</p>' +
+        '</div>';
+      hintbar.textContent = "Switch to Rapid Fire to keep drilling.";
+      return;
+    }
+
+    current = buildQuestion();
+    qStartTs = Date.now();
+    if(!current) return;
+
+    var word = byId[current.wordId];
+    var isW2D = current.direction === "w2d";
+    var tagText = isW2D ? "Word → Definition" : "Definition → Word";
+
+    var promptHtml;
+    if(isW2D){
+      promptHtml =
+        '<div class="prompt-eyebrow">Which definition matches this word?</div>' +
+        '<div class="prompt-word">'+escapeHtml(word.word)+'<span class="prompt-pos">'+escapeHtml(word.pos)+'</span></div>';
+    } else {
+      promptHtml =
+        '<div class="prompt-eyebrow">Which word matches this definition?</div>' +
+        '<div class="prompt-def">“'+escapeHtml(capitalize(word.def))+'”</div>';
+    }
+
+    var optsHtml = current.optionIds.map(function(id, i){
+      var w = byId[id];
+      var label = isW2D ? capitalize(w.def) : w.word;
+      return '<button class="opt" data-i="'+i+'" data-id="'+id+'">' +
+             '<span class="k">'+letters()[i]+'</span><span class="t">'+escapeHtml(label)+'</span></button>';
+    }).join("");
+
+    ticketEl.innerHTML =
+      '<div class="ticket-top">' +
+        '<span class="tag">'+tagText+'</span>' +
+        '<span class="qnum">Q'+(state.totalAnswered+1)+ (mode==="review" ? " · review" : "") +'</span>' +
+      '</div>' +
+      '<div class="prompt">'+promptHtml+'</div>' +
+      '<div class="options">'+optsHtml+'</div>' +
+      '<div class="feedback" id="feedback"></div>' +
+      '<div class="ticket-bottom" id="ticketBottom"></div>';
+
+    Array.prototype.forEach.call(ticketEl.querySelectorAll(".opt"), function(btn){
+      btn.addEventListener("click", function(e){
+        e.stopPropagation(); // don't let this bubble into the ticket's skip-to-next listener
+        answer(Number(btn.getAttribute("data-i")));
+      });
+    });
+
+    hintbar.textContent = "Press 1–5 or tap an answer — the next word loads automatically.";
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function capitalize(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function answer(i){
+    if(!current || current.answered) return;
+    current.answered = true;
+    var elapsed = Date.now() - qStartTs;
+    state.totalMs += elapsed;
+
+    var correct = i === current.correctIdx;
+    var wordId = current.wordId;
+
+    state.totalAnswered++;
+    if(correct){
+      state.totalCorrect++;
+      state.streak++;
+      if(state.streak > state.bestStreak) state.bestStreak = state.streak;
+      if(state.review[wordId]) delete state.review[wordId];
+    } else {
+      state.streak = 0;
+      var rec = state.review[wordId] || { misses:0 };
+      rec.misses++;
+      rec.last = Date.now();
+      state.review[wordId] = rec;
+    }
+    saveState();
+    refreshStats();
+
+    var btns = ticketEl.querySelectorAll(".opt");
+    Array.prototype.forEach.call(btns, function(btn){
+      btn.disabled = true;
+      var bi = Number(btn.getAttribute("data-i"));
+      if(bi === current.correctIdx) btn.classList.add("correct");
+      else if(bi === i) btn.classList.add("incorrect");
+      else btn.classList.add("dim");
+    });
+
+    var word = byId[wordId];
+    var fb = document.getElementById("feedback");
+    fb.classList.add("show", correct ? "good" : "bad");
+    if(correct){
+      fb.innerHTML = '<span class="icon">✓</span><span>Correct — <b>'+escapeHtml(word.word)+'</b> ('+escapeHtml(word.pos)+') means '+escapeHtml(word.def)+'.</span>';
+    } else {
+      fb.innerHTML = '<span class="icon">✕</span><span>Not quite — <b>'+escapeHtml(word.word)+'</b> ('+escapeHtml(word.pos)+') means '+escapeHtml(word.def)+'. Saved to Review.</span>';
+    }
+
+    document.getElementById("ticketBottom").innerHTML =
+      '<span class="next-auto">Next word loading… <span class="hint">tap or Enter to skip</span></span>';
+
+    // Auto-advance: no second click needed. Correct answers move on quickly;
+    // misses linger a bit longer so there's time to read the definition.
+    // Tapping the ticket (or pressing Enter/Space, handled below) skips the wait.
+    clearNextTimer();
+    nextTimer = setTimeout(goNext, correct ? 700 : 2000);
+  }
+
+  document.getElementById("modeRapid").addEventListener("click", function(){
+    mode = "rapid";
+    this.setAttribute("aria-pressed","true");
+    document.getElementById("modeReview").setAttribute("aria-pressed","false");
+    goNext();
+  });
+  document.getElementById("modeReview").addEventListener("click", function(){
+    mode = "review";
+    this.setAttribute("aria-pressed","true");
+    document.getElementById("modeRapid").setAttribute("aria-pressed","false");
+    goNext();
+  });
+
+  document.addEventListener("keydown", function(e){
+    if(e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+    if(!current) return;
+    if(!current.answered && ["1","2","3","4","5"].indexOf(e.key) !== -1){
+      var idx = Number(e.key) - 1;
+      if(idx < current.optionIds.length){ answer(idx); e.preventDefault(); }
+    } else if(current.answered && (e.key === "Enter" || e.key === " ")){
+      goNext(); e.preventDefault();
+    }
+  });
+
+  // Tapping anywhere on the answered ticket skips the auto-advance wait.
+  // (Disabled option buttons don't dispatch click events, so this never
+  // fires as a side effect of the answer tap itself.)
+  ticketEl.addEventListener("click", function(){
+    if(current && current.answered) goNext();
+  });
+
+  document.getElementById("connectFileBtn").addEventListener("click", function(){
+    if(fileStatus === "needs-permission" || fileStatus === "error"){
+      fileHandle.requestPermission({ mode:"readwrite" }).then(function(p){
+        if(p === "granted"){ fileStatus = "connected"; refreshFileUi(); queueWriteToFile(); }
+        else refreshFileUi();
+      });
+    } else {
+      connectNewFile();
+    }
+  });
+  document.getElementById("importInput").addEventListener("change", function(e){
+    if(e.target.files && e.target.files[0]) importBackup(e.target.files[0]);
+    e.target.value = "";
+  });
+  if(SHOW_BACKUP_BAR) tryReconnectStoredFile();
+
+  refreshStats();
+  render();
+})();
+</script>
+</body>
+</html>
