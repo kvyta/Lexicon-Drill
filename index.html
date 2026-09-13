@@ -512,18 +512,19 @@
     return a;
   }
 
-  // Distractors must (a) share the word's part of speech, so answer choices
-  // can't be eliminated on grammar alone, and (b) mix a couple of genuine
-  // near-synonyms in with a broader, still-plausible set — pulling all 4
-  // from one tight synonym cluster makes every choice read as basically the
-  // same definition (unanswerable, and a giveaway of the word's meaning in
-  // its own right). MAX_SAME_CLUSTER caps how many of the 4 come from the
-  // word's own cluster; the rest come from the wider same-part-of-speech
-  // word list. Linked "related" clusters are often near-*antonyms* (lazy <->
-  // energetic), so they stay a last resort — otherwise one antonym mixed
-  // into four synonyms makes the odd one out obvious instead of testing
-  // precise meaning.
-  var MAX_SAME_CLUSTER = 2;
+  // Distractors must share the word's part of speech, so answer choices
+  // can't be eliminated on grammar alone — but they are deliberately kept
+  // OUT of the word's own near-synonym cluster (and out of its "related"
+  // cluster, which tends to hold near-*antonyms* like lazy <-> energetic).
+  // Close synonyms made questions unanswerable (several near-identical
+  // definitions in one question) and doubled as a free hint at the target
+  // word's meaning; antonyms made the odd one out obvious. So distractors
+  // come from the wider same-part-of-speech word list instead — still
+  // requires knowing the word (no POS shortcut), but each option is a
+  // genuinely different, unrelated word. The broad pool has at least a
+  // few dozen same-POS candidates outside any given word's cluster, so
+  // the cluster/related tiers below are just a safety net and shouldn't
+  // normally fire.
   function pickDistractors(word, n){
     var wantPos = word.pos;
     function samePos(id){ return byId[id].pos === wantPos; }
@@ -532,19 +533,19 @@
     var sameIds = {}; word.same.forEach(function(id){ sameIds[id] = true; });
     var relatedIds = {}; word.related.forEach(function(id){ relatedIds[id] = true; });
 
-    function addFrom(ids, cap){
-      var room = (cap == null) ? (n - picked.length) : Math.min(cap, n - picked.length);
-      if(room <= 0) return;
+    function addFrom(ids){
+      if(picked.length >= n) return;
       var candidates = shuffleArr(ids.filter(function(id){ return !used[id] && samePos(id); }));
-      candidates.slice(0, room).forEach(function(id){ picked.push(id); used[id] = true; });
+      candidates.forEach(function(id){
+        if(picked.length < n){ picked.push(id); used[id] = true; }
+      });
     }
 
-    addFrom(word.same, MAX_SAME_CLUSTER);           // tier 1: a couple of true near-synonyms
-    addFrom(allIds.filter(function(id){ return !sameIds[id] && !relatedIds[id]; })); // tier 2: broad same-POS pool
-    if(picked.length < n) addFrom(word.same);       // tier 3: exhaust same-cluster if the broad pool ran short
-    if(picked.length < n) addFrom(word.related);    // tier 4: linked cluster, last resort (often antonyms)
-    if(picked.length < n) addFrom(allIds);          // tier 5: absolute fallback, same part of speech
-    if(picked.length < n){                          // tier 6: should not normally trigger
+    addFrom(allIds.filter(function(id){ return !sameIds[id] && !relatedIds[id]; })); // tier 1: broad pool, no synonyms or antonyms
+    if(picked.length < n) addFrom(word.related);    // tier 2 (safety net): linked cluster, often antonyms
+    if(picked.length < n) addFrom(word.same);       // tier 3 (safety net): own synonym cluster
+    if(picked.length < n) addFrom(allIds);          // tier 4: absolute fallback, same part of speech
+    if(picked.length < n){                          // tier 5: should not normally trigger
       var rest = shuffleArr(allIds.filter(function(id){ return !used[id]; }));
       rest.forEach(function(id){ if(picked.length < n){ picked.push(id); used[id]=true; } });
     }
